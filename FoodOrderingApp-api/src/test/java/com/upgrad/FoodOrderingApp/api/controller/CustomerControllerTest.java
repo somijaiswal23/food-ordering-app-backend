@@ -1,7 +1,7 @@
 package com.upgrad.FoodOrderingApp.api.controller;
 
 import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
-//import com.upgrad.FoodOrderingApp.service.entity.CustomerAuthEntity;
+import com.upgrad.FoodOrderingApp.service.entity.CustomerAuthEntity;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AuthenticationFailedException;
 import com.upgrad.FoodOrderingApp.service.exception.AuthorizationFailedException;
@@ -37,165 +37,165 @@ public class CustomerControllerTest {
 
     @MockBean
     private CustomerService mockCustomerService;
+//
+//    // ----------------------------- POST /customer/signup --------------------------------
+//
+//    //This test case passes when you are able to signup successfully.
+//    @Test
+//    public void shouldSignUpForValidRequest() throws Exception {
+//        final CustomerEntity createdCustomerEntity = new CustomerEntity();
+//        final String customerId = UUID.randomUUID().toString();
+//        createdCustomerEntity.setUuid(customerId);
+//        when(mockCustomerService.saveCustomer(any())).thenReturn(createdCustomerEntity);
+//
+//        mockMvc
+//                .perform(post("/customer/signup")
+//                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+//                        .content("{\"first_name\":\"first\", \"last_name\":\"last\", \"email_address\":\"abc@email.com\", \"contact_number\":\"9090909090\", \"password\":\"qawsedrf@123\"}"))
+//                .andExpect(status().isCreated())
+//                .andExpect(jsonPath("id").value(customerId));
+//        verify(mockCustomerService, times(1)).saveCustomer(any());
+//    }
+//
+//    //This test case passes when you have handled the exception of trying to signup but the request field is empty.
+//    @Test
+//    public void shouldNotSignUpForEmptyRequest() throws Exception {
+//        mockMvc
+//                .perform(post("/customer/signup")
+//                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+//                        .content("{\"first_name\":\"first\", \"last_name\":\"last\", \"email_address\":\"\", \"contact_number\":\"9090909090\", \"password\":\"qawsedrf@123\"}"))
+//                .andExpect(status().isBadRequest())
+//                .andExpect(jsonPath("code").value("SGR-005"));
+//        verify(mockCustomerService, times(0)).saveCustomer(any());
+//    }
+//
+//    //This test case passes when you have handled the exception of trying to signup with invalid email-id.
+//    @Test
+//    public void shouldNotSignUpForInvalidEmailId() throws Exception {
+//        when(mockCustomerService.saveCustomer(any()))
+//                .thenThrow(new SignUpRestrictedException("SGR-002", "Invalid email-id format!"));
+//
+//        mockMvc
+//                .perform(post("/customer/signup")
+//                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+//                        .content("{\"first_name\":\"first\", \"last_name\":\"last\", \"email_address\":\"abc@1\", \"contact_number\":\"9090909090\", \"password\":\"qawsedrf@123\"}"))
+//                .andExpect(status().isBadRequest())
+//                .andExpect(jsonPath("code").value("SGR-002"));
+//        verify(mockCustomerService, times(1)).saveCustomer(any());
+//    }
+//
+//    //This test case passes when you have handled the exception of trying to signup with invalid contact number.
+//    @Test
+//    public void shouldNotSignUpForInvalidContactNo() throws Exception {
+//        when(mockCustomerService.saveCustomer(any()))
+//                .thenThrow(new SignUpRestrictedException("SGR-003", "Invalid contact number!"));
+//
+//        mockMvc
+//                .perform(post("/customer/signup")
+//                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+//                        .content("{\"first_name\":\"first\", \"last_name\":\"last\", \"email_address\":\"abc@email.com\", \"contact_number\":\"123\", \"password\":\"qawsedrf@123\"}"))
+//                .andExpect(status().isBadRequest())
+//                .andExpect(jsonPath("code").value("SGR-003"));
+//        verify(mockCustomerService, times(1)).saveCustomer(any());
+//    }
+//
+//    //This test case passes when you have handled the exception of trying to signup with invalid password.
+//    @Test
+//    public void shouldNotSignUpForInvalidPassword() throws Exception {
+//        when(mockCustomerService.saveCustomer(any()))
+//                .thenThrow(new SignUpRestrictedException("SGR-004", "Weak password!"));
+//
+//        mockMvc
+//                .perform(post("/customer/signup")
+//                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+//                        .content("{\"first_name\":\"first\", \"last_name\":\"last\", \"email_address\":\"abc@email.com\", \"contact_number\":\"9090909090\", \"password\":\"1\"}"))
+//                .andExpect(status().isBadRequest())
+//                .andExpect(jsonPath("code").value("SGR-004"));
+//        verify(mockCustomerService, times(1)).saveCustomer(any());
+//    }
+//
+//    //This test case passes when you have handled the exception of trying to signup with a contact number which is
+//    // already registered.
+//    @Test
+//    public void shouldNotSignUpIfTheContactIsAlreadySignedUp() throws Exception {
+//        when(mockCustomerService.saveCustomer(any()))
+//                .thenThrow(new SignUpRestrictedException("SGR-001", "Try any other contact number, this contact number has already been taken"));
+//
+//        mockMvc
+//                .perform(post("/customer/signup")
+//                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+//                        .content("{\"first_name\":\"first\", \"last_name\":\"last\", \"email_address\":\"abc@email.com\", \"contact_number\":\"9090909090\", \"password\":\"qawsedrf@123\"}"))
+//                .andExpect(status().isBadRequest())
+//                .andExpect(jsonPath("code").value("SGR-001"));
+//        verify(mockCustomerService, times(1)).saveCustomer(any());
+//    }
 
-    // ----------------------------- POST /customer/signup --------------------------------
+    // ----------------------------- POST /customer/login --------------------------------
 
-    //This test case passes when you are able to signup successfully.
+    //This test case passes when you are able to login successfully.
     @Test
-    public void shouldSignUpForValidRequest() throws Exception {
-        final CustomerEntity createdCustomerEntity = new CustomerEntity();
+    public void shouldLoginForValidRequest() throws Exception {
+        final CustomerAuthEntity createdCustomerAuthEntity = new CustomerAuthEntity();
+        createdCustomerAuthEntity.setAccessToken("accessToken");
+        final CustomerEntity customerEntity = new CustomerEntity();
         final String customerId = UUID.randomUUID().toString();
-        createdCustomerEntity.setUuid(customerId);
-        when(mockCustomerService.saveCustomer(any())).thenReturn(createdCustomerEntity);
+        customerEntity.setUuid(customerId);
+        createdCustomerAuthEntity.setCustomer(customerEntity);
+
+        when(mockCustomerService.authenticate("9090909090", "CorrectPassword"))
+                .thenReturn(createdCustomerAuthEntity);
 
         mockMvc
-                .perform(post("/customer/signup")
+                .perform(post("/customer/login")
                         .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-                        .content("{\"first_name\":\"first\", \"last_name\":\"last\", \"email_address\":\"abc@email.com\", \"contact_number\":\"9090909090\", \"password\":\"qawsedrf@123\"}"))
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("id").value(customerId));
-        verify(mockCustomerService, times(1)).saveCustomer(any());
+                        .header("authorization", "Basic " + getEncoder().encodeToString("9090909090:CorrectPassword".getBytes())))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("id").value(customerId))
+                .andExpect(header().exists("access-token"));
+        verify(mockCustomerService, times(1)).authenticate("9090909090", "CorrectPassword");
     }
 
-    //This test case passes when you have handled the exception of trying to signup but the request field is empty.
+    //This test case passes when you have handled the exception of trying to login with invalid authorization format.
     @Test
-    public void shouldNotSignUpForEmptyRequest() throws Exception {
+    public void shouldNotLoginForInvalidAuthorizationFormat() throws Exception {
         mockMvc
-                .perform(post("/customer/signup")
+                .perform(post("/customer/login")
                         .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-                        .content("{\"first_name\":\"first\", \"last_name\":\"last\", \"email_address\":\"\", \"contact_number\":\"9090909090\", \"password\":\"qawsedrf@123\"}"))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("code").value("SGR-005"));
-        verify(mockCustomerService, times(0)).saveCustomer(any());
+                        .header("authorization", "Basic " + getEncoder().encodeToString(":".getBytes())))
+                .andExpect(status().isUnauthorized())
+                .andExpect(jsonPath("code").value("ATH-003"));
+        verify(mockCustomerService, times(0)).authenticate(anyString(), anyString());
     }
 
-    //This test case passes when you have handled the exception of trying to signup with invalid email-id.
+    //This test case passes when you have handled the exception of trying to login with a contact number that is not
+    // registered yet.
     @Test
-    public void shouldNotSignUpForInvalidEmailId() throws Exception {
-        when(mockCustomerService.saveCustomer(any()))
-                .thenThrow(new SignUpRestrictedException("SGR-002", "Invalid email-id format!"));
-
+    public void shouldNotLoginIfNoDataPresentForGivenMobileNo() throws Exception {
+        when(mockCustomerService.authenticate("123", "CorrectPassword"))
+                .thenThrow(new AuthenticationFailedException("ATH-001", "This contact number does not exist"));
         mockMvc
-                .perform(post("/customer/signup")
+                .perform(post("/customer/login")
                         .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-                        .content("{\"first_name\":\"first\", \"last_name\":\"last\", \"email_address\":\"abc@1\", \"contact_number\":\"9090909090\", \"password\":\"qawsedrf@123\"}"))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("code").value("SGR-002"));
-        verify(mockCustomerService, times(1)).saveCustomer(any());
+                        .header("authorization", "Basic " + getEncoder().encodeToString("123:CorrectPassword".getBytes())))
+                .andExpect(status().isUnauthorized())
+                .andExpect(jsonPath("code").value("ATH-001"));
+        verify(mockCustomerService, times(1)).authenticate("123", "CorrectPassword");
     }
 
-    //This test case passes when you have handled the exception of trying to signup with invalid contact number.
+    //This test case passes when you have handled the exception of trying to login with incorrect password.
     @Test
-    public void shouldNotSignUpForInvalidContactNo() throws Exception {
-        when(mockCustomerService.saveCustomer(any()))
-                .thenThrow(new SignUpRestrictedException("SGR-003", "Invalid contact number!"));
-
+    public void shouldNotLoginForWrongPassword() throws Exception {
+        when(mockCustomerService.authenticate("9090909090", "IncorrectPassword"))
+                .thenThrow(new AuthenticationFailedException("ATH-002", "Password failed"));
         mockMvc
-                .perform(post("/customer/signup")
+                .perform(post("/customer/login")
                         .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-                        .content("{\"first_name\":\"first\", \"last_name\":\"last\", \"email_address\":\"abc@email.com\", \"contact_number\":\"123\", \"password\":\"qawsedrf@123\"}"))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("code").value("SGR-003"));
-        verify(mockCustomerService, times(1)).saveCustomer(any());
-    }
-
-    //This test case passes when you have handled the exception of trying to signup with invalid password.
-    @Test
-    public void shouldNotSignUpForInvalidPassword() throws Exception {
-        when(mockCustomerService.saveCustomer(any()))
-                .thenThrow(new SignUpRestrictedException("SGR-004", "Weak password!"));
-
-        mockMvc
-                .perform(post("/customer/signup")
-                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-                        .content("{\"first_name\":\"first\", \"last_name\":\"last\", \"email_address\":\"abc@email.com\", \"contact_number\":\"9090909090\", \"password\":\"1\"}"))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("code").value("SGR-004"));
-        verify(mockCustomerService, times(1)).saveCustomer(any());
-    }
-
-    //This test case passes when you have handled the exception of trying to signup with a contact number which is
-    // already registered.
-    @Test
-    public void shouldNotSignUpIfTheContactIsAlreadySignedUp() throws Exception {
-        when(mockCustomerService.saveCustomer(any()))
-                .thenThrow(new SignUpRestrictedException("SGR-001", "Try any other contact number, this contact number has already been taken"));
-
-        mockMvc
-                .perform(post("/customer/signup")
-                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-                        .content("{\"first_name\":\"first\", \"last_name\":\"last\", \"email_address\":\"abc@email.com\", \"contact_number\":\"9090909090\", \"password\":\"qawsedrf@123\"}"))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("code").value("SGR-001"));
-        verify(mockCustomerService, times(1)).saveCustomer(any());
+                        .header("authorization", "Basic " + getEncoder().encodeToString("9090909090:IncorrectPassword".getBytes())))
+                .andExpect(status().isUnauthorized())
+                .andExpect(jsonPath("code").value("ATH-002"));
+        verify(mockCustomerService, times(1)).authenticate("9090909090", "IncorrectPassword");
     }
 }
-//    // ----------------------------- POST /customer/login --------------------------------
-//
-//    //This test case passes when you are able to login successfully.
-//    @Test
-//    public void shouldLoginForValidRequest() throws Exception {
-//        final CustomerAuthEntity createdCustomerAuthEntity = new CustomerAuthEntity();
-//        createdCustomerAuthEntity.setAccessToken("accessToken");
-//        final CustomerEntity customerEntity = new CustomerEntity();
-//        final String customerId = UUID.randomUUID().toString();
-//        customerEntity.setUuid(customerId);
-//        createdCustomerAuthEntity.setCustomer(customerEntity);
-//
-//        when(mockCustomerService.authenticate("9090909090", "CorrectPassword"))
-//                .thenReturn(createdCustomerAuthEntity);
-//
-//        mockMvc
-//                .perform(post("/customer/login")
-//                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-//                        .header("authorization", "Basic " + getEncoder().encodeToString("9090909090:CorrectPassword".getBytes())))
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("id").value(customerId))
-//                .andExpect(header().exists("access-token"));
-//        verify(mockCustomerService, times(1)).authenticate("9090909090", "CorrectPassword");
-//    }
-//
-//    //This test case passes when you have handled the exception of trying to login with invalid authorization format.
-//    @Test
-//    public void shouldNotLoginForInvalidAuthorizationFormat() throws Exception {
-//        mockMvc
-//                .perform(post("/customer/login")
-//                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-//                        .header("authorization", "Basic " + getEncoder().encodeToString(":".getBytes())))
-//                .andExpect(status().isUnauthorized())
-//                .andExpect(jsonPath("code").value("ATH-003"));
-//        verify(mockCustomerService, times(0)).authenticate(anyString(), anyString());
-//    }
-//
-//    //This test case passes when you have handled the exception of trying to login with a contact number that is not
-//    // registered yet.
-//    @Test
-//    public void shouldNotLoginIfNoDataPresentForGivenMobileNo() throws Exception {
-//        when(mockCustomerService.authenticate("123", "CorrectPassword"))
-//                .thenThrow(new AuthenticationFailedException("ATH-001", "This contact number does not exist"));
-//        mockMvc
-//                .perform(post("/customer/login")
-//                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-//                        .header("authorization", "Basic " + getEncoder().encodeToString("123:CorrectPassword".getBytes())))
-//                .andExpect(status().isUnauthorized())
-//                .andExpect(jsonPath("code").value("ATH-001"));
-//        verify(mockCustomerService, times(1)).authenticate("123", "CorrectPassword");
-//    }
-//
-//    //This test case passes when you have handled the exception of trying to login with incorrect password.
-//    @Test
-//    public void shouldNotLoginForWrongPassword() throws Exception {
-//        when(mockCustomerService.authenticate("9090909090", "IncorrectPassword"))
-//                .thenThrow(new AuthenticationFailedException("ATH-002", "Password failed"));
-//        mockMvc
-//                .perform(post("/customer/login")
-//                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-//                        .header("authorization", "Basic " + getEncoder().encodeToString("9090909090:IncorrectPassword".getBytes())))
-//                .andExpect(status().isUnauthorized())
-//                .andExpect(jsonPath("code").value("ATH-002"));
-//        verify(mockCustomerService, times(1)).authenticate("9090909090", "IncorrectPassword");
-//    }
-//
 //    // ----------------------------- POST /customer/logout --------------------------------
 //
 //    //This test case passes when you are able to logout successfully.
