@@ -170,6 +170,7 @@ public class CustomerService {
      *
      * @return Updated CustomerEntity object
      */
+    @Transactional(propagation = Propagation.REQUIRED)
     public CustomerEntity updateCustomer(CustomerEntity customerEntity) {
         return customerDao.updateCustomerEntity(customerEntity);
     }
