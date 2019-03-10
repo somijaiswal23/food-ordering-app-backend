@@ -4,6 +4,7 @@ import com.upgrad.FoodOrderingApp.service.dao.CustomerDao;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerAuthEntity;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AuthenticationFailedException;
+import com.upgrad.FoodOrderingApp.service.exception.AuthorizationFailedException;
 import com.upgrad.FoodOrderingApp.service.exception.SignUpRestrictedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -99,5 +100,37 @@ public class CustomerService {
         } else {
             throw new AuthenticationFailedException("ATH-002", "Invalid Credentials");
         }
+    }
+
+    /**
+     * This method implements the business logic for 'logout' endpoint
+     *
+     * @param authorization Customer access token in 'Bearer <access-token>' format
+     *
+     * @return Updated CustomerAuthEntity object
+     *
+     * @throws AuthorizationFailedException if any of the validation fails on customer authorization
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    public CustomerAuthEntity logout(String authorization) throws AuthorizationFailedException {
+
+        String accessToken = authorization.split("Bearer ")[1];
+        CustomerAuthEntity customerAuthEntity = customerDao.getCustomerAuthByAccessToken(accessToken);
+
+        if (customerAuthEntity == null) {
+            throw new AuthorizationFailedException("ATHR-001", "Customer is not Logged in.");
+        }
+
+        if (customerAuthEntity.getLogoutAt() != null) {
+            throw new AuthorizationFailedException("ATHR-002", "Customer is logged out. Log in again to access this endpoint.");
+        }
+
+        ZonedDateTime now = ZonedDateTime.now();
+        if (customerAuthEntity.getExpiresAt().isBefore(now)) {
+            throw new AuthorizationFailedException("ATHR-003", "Your session is expired. Log in again to access this endpoint.");
+        }
+
+        customerAuthEntity.setLogoutAt(now);
+        return customerDao.updateCustomerAuth(customerAuthEntity);
     }
 }
