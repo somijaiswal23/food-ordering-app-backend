@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2187793b-e64d-48fa-93dc-77d9c32a3738" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/CustomerController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,12 +39,12 @@
     <session id="-917853966">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="3" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -51,7 +52,7 @@
           <entry key="class" value="7" />
           <entry key="gitignore" value="1" />
           <entry key="iml" value="2" />
-          <entry key="java" value="93" />
+          <entry key="java" value="99" />
           <entry key="sql" value="2" />
           <entry key="xml" value="2" />
           <entry key="yaml" value="1" />
@@ -61,7 +62,7 @@
         <counts>
           <entry key="CLASS" value="7" />
           <entry key="IDEA_MODULE" value="2" />
-          <entry key="JAVA" value="93" />
+          <entry key="JAVA" value="99" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SQL" value="2" />
           <entry key="XML" value="2" />
@@ -71,12 +72,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="13" />
-          <entry key="java" value="8467" />
+          <entry key="java" value="8471" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8467" />
+          <entry key="JAVA" value="8471" />
           <entry key="PLAIN_TEXT" value="13" />
         </counts>
       </usages-collector>
@@ -88,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/FoodOrderingAppApiApplication.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="440">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#626#627#0" expanded="true" />
@@ -98,11 +99,56 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/CustomerDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="3" column="49" lean-forward="true" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/CustomerService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="177" lean-forward="true" selection-start-line="177" selection-end-line="177" />
+            <state relative-caret-position="154">
+              <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/CustomerController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="389">
+              <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/exception/RestExceptionHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="17" column="33" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/CustomerControllerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="117" column="26" lean-forward="true" selection-start-line="117" selection-start-column="26" selection-end-line="117" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -220,8 +266,8 @@
         <option value="$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/CustomerControllerTest.java" />
         <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/CustomerDao.java" />
         <option value="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/exception/RestExceptionHandler.java" />
-        <option value="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/CustomerController.java" />
         <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/CustomerService.java" />
+        <option value="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/CustomerController.java" />
       </list>
     </option>
   </component>
@@ -244,6 +290,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -315,6 +364,30 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
               <item name="exception" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
+              <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
+              <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
+              <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
@@ -400,9 +473,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -414,7 +484,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552257762312" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552321145477" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller" />
     <property name="last_opened_file_path" value="D:/software/postgresql-42.2.5.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -580,8 +650,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.CustomerControllerTest" />
-        <item itemvalue="Application.FoodOrderingAppApiApplication" />
         <item itemvalue="JUnit.CustomerControllerTest.shouldUpdateCustomerDetails" />
+        <item itemvalue="Application.FoodOrderingAppApiApplication" />
         <item itemvalue="JUnit.CustomerControllerTest.shouldNotUpdateCustomerDetailsWhenCustomerIsNotLoggedIn" />
         <item itemvalue="JUnit.CustomerControllerTest.shouldNotUpdateCustomerDetailsIfFirstNameNotPresentInTheRequest" />
       </list>
@@ -612,25 +682,11 @@
       <workItem from="1552178696978" duration="3077000" />
       <workItem from="1552216875986" duration="13091000" />
       <workItem from="1552236880587" duration="6008000" />
+      <workItem from="1552318290646" duration="1934000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CustomerControllerTest - 2019.03.11 at 03h 26m 35s.xml">
-      <configuration name="CustomerControllerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CustomerControllerTest - 2019.03.11 at 03h 28m 13s.xml">
-      <configuration name="CustomerControllerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CustomerControllerTest_shouldUpdateCustomerDetails - 2019.03.11 at 03h 28m 31s.xml">
-      <configuration name="CustomerControllerTest.shouldUpdateCustomerDetails" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CustomerControllerTest_shouldNotUpdateCustomerDetailsIfFirstNameNotPresentInTheRequest - 2019.03.11 at 03h 29m 11s.xml">
-      <configuration name="CustomerControllerTest.shouldNotUpdateCustomerDetailsIfFirstNameNotPresentInTheRequest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CustomerControllerTest_shouldNotUpdateCustomerDetailsWhenCustomerIsNotLoggedIn - 2019.03.11 at 03h 29m 27s.xml">
-      <configuration name="CustomerControllerTest.shouldNotUpdateCustomerDetailsWhenCustomerIsNotLoggedIn" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CustomerControllerTest_shouldUpdateCustomerDetails - 2019.03.11 at 03h 29m 39s.xml">
       <configuration name="CustomerControllerTest.shouldUpdateCustomerDetails" configurationId="JUnit" />
     </history-entry>
@@ -646,9 +702,24 @@
     <history-entry file="CustomerControllerTest_shouldUpdateCustomerDetails - 2019.03.11 at 03h 31m 54s.xml">
       <configuration name="CustomerControllerTest.shouldUpdateCustomerDetails" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="CustomerControllerTest - 2019.03.11 at 04h 12m 45s.xml">
+      <configuration name="CustomerControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CustomerControllerTest - 2019.03.11 at 21h 17m 22s.xml">
+      <configuration name="CustomerControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CustomerControllerTest_shouldUpdateCustomerDetails - 2019.03.11 at 21h 18m 17s.xml">
+      <configuration name="CustomerControllerTest.shouldUpdateCustomerDetails" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CustomerControllerTest_shouldUpdateCustomerDetails - 2019.03.11 at 21h 46m 16s.xml">
+      <configuration name="CustomerControllerTest.shouldUpdateCustomerDetails" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CustomerControllerTest - 2019.03.11 at 21h 46m 30s.xml">
+      <configuration name="CustomerControllerTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="307681000" />
+    <option name="totallyTimeSpent" value="310214000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -663,7 +734,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25637585" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25973153" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -673,7 +744,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32765958" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4986577" weight="0.6638298" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4986577" weight="0.6524823" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39007092" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -964,13 +1035,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/target/classes/com/upgrad/FoodOrderingApp/api/model/LogoutResponse.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#2318#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerAuthEntity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -986,56 +1051,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="498">
           <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-          <folding>
-            <element signature="e#0#2329#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/CustomerControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-183">
-          <caret line="282" column="41" lean-forward="true" selection-start-line="282" selection-start-column="41" selection-end-line="282" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/CustomerDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="69" column="24" lean-forward="true" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/exception/RestExceptionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/CustomerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="66">
+          <caret line="3" column="49" lean-forward="true" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/FoodOrderingAppApiApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#626#627#0" expanded="true" />
@@ -1046,8 +1075,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/CustomerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="177" lean-forward="true" selection-start-line="177" selection-end-line="177" />
+        <state relative-caret-position="154">
+          <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/exception/RestExceptionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="33" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/CustomerControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="117" column="26" lean-forward="true" selection-start-line="117" selection-start-column="26" selection-end-line="117" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/CustomerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

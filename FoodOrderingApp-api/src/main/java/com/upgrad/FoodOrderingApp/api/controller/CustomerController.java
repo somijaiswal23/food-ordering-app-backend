@@ -127,7 +127,7 @@ public class CustomerController {
      * This api endpoint is used to update an existing customer
      *
      * @param updateCustomerRequest this argument contains all the attributes required to update a customer in the database
-     * @param authorization customer access token
+     * @param authorization customer access token in 'Bearer <access-token>' format
      *
      * @return ResponseEntity<UpdateCustomerResponse> type object along with HttpStatus OK
      *
@@ -142,7 +142,9 @@ public class CustomerController {
             throw new UpdateCustomerException("UCR-002", "First name field should not be empty");
         }
 
-        CustomerEntity customerEntity = customerService.getCustomer(authorization);
+        String accessToken = authorization.split("Bearer ")[1];
+        CustomerEntity customerEntity = customerService.getCustomer(accessToken);
+
         customerEntity.setFirstName(updateCustomerRequest.getFirstName());
         if (!updateCustomerRequest.getLastName().equals("")) {
             customerEntity.setLastName(updateCustomerRequest.getLastName());
