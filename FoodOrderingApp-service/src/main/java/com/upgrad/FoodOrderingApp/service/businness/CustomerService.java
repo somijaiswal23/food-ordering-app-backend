@@ -6,6 +6,7 @@ import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AuthenticationFailedException;
 import com.upgrad.FoodOrderingApp.service.exception.AuthorizationFailedException;
 import com.upgrad.FoodOrderingApp.service.exception.SignUpRestrictedException;
+import com.upgrad.FoodOrderingApp.service.exception.UpdateCustomerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -172,6 +173,39 @@ public class CustomerService {
      */
     @Transactional(propagation = Propagation.REQUIRED)
     public CustomerEntity updateCustomer(CustomerEntity customerEntity) {
+        return customerDao.updateCustomerEntity(customerEntity);
+    }
+
+    /**
+     * This method updates password of existing customer
+     *
+     * @param oldPassword Customer's old password
+     * @param newPassword Customer's new password
+     * @param customerEntity CustomerEntity object to update
+     *
+     * @return Updated CustomerEntity object
+     *
+     * @throws UpdateCustomerException If validation for old or new password fails
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    public CustomerEntity updateCustomerPassword(String oldPassword, String newPassword, CustomerEntity customerEntity) throws UpdateCustomerException {
+
+        // validation for new password strength
+        if (!newPassword.matches("^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#@$%&*!^-]).{8,}$")) {
+            throw new UpdateCustomerException("UCR-001", "Weak password!");
+        }
+
+        // validation for old password
+        final String oldEncryptedPassword = PasswordCryptographyProvider.encrypt(oldPassword, customerEntity.getSalt());
+        if (!oldEncryptedPassword.equals(customerEntity.getPassoword())) {
+            throw new UpdateCustomerException("UCR-004", "Incorrect old password!");
+        }
+
+        // encrypt salt and new password
+        String[] encryptedText = passwordCryptographyProvider.encrypt(newPassword);
+        customerEntity.setSalt(encryptedText[0]);
+        customerEntity.setPassoword(encryptedText[1]);
+
         return customerDao.updateCustomerEntity(customerEntity);
     }
 }
