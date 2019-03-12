@@ -113,9 +113,8 @@ public class CustomerService {
      * @throws AuthorizationFailedException if any of the validation fails on customer authorization
      */
     @Transactional(propagation = Propagation.REQUIRED)
-    public CustomerAuthEntity logout(String authorization) throws AuthorizationFailedException {
+    public CustomerAuthEntity logout(String accessToken) throws AuthorizationFailedException {
 
-        String accessToken = authorization.split("Bearer ")[1];
         CustomerAuthEntity customerAuthEntity = customerDao.getCustomerAuthByAccessToken(accessToken);
 
         if (customerAuthEntity == null) {

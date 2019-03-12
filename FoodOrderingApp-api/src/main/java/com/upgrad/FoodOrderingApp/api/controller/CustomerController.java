@@ -77,16 +77,19 @@ public class CustomerController {
     public ResponseEntity<LoginResponse> login(@RequestHeader("authorization") final String authorization) throws AuthenticationFailedException {
 
         byte[] decode;
+        String contactNumber;
+        String customerPassword;
         try {
             decode = Base64.getDecoder().decode(authorization.split("Basic ")[1]);
+            String decodedText = new String(decode);
+            String[] decodedArray = decodedText.split(":");
+            contactNumber = decodedArray[0];
+            customerPassword = decodedArray[1];
         } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException ex) {
             throw new AuthenticationFailedException("ATH-003", "Incorrect format of decoded customer name and password");
         }
 
-        String decodedText = new String(decode);
-        String[] decodedArray = decodedText.split(":");
-
-        CustomerAuthEntity createdCustomerAuthEntity = customerService.authenticate(decodedArray[0], decodedArray[1]);
+        CustomerAuthEntity createdCustomerAuthEntity = customerService.authenticate(contactNumber, customerPassword);
 
         LoginResponse loginResponse = new LoginResponse().id(createdCustomerAuthEntity.getCustomer().getUuid()).message("LOGGED IN SUCCESSFULLY");
         loginResponse.setId(createdCustomerAuthEntity.getCustomer().getUuid());
@@ -117,7 +120,9 @@ public class CustomerController {
     @RequestMapping(method = RequestMethod.POST, path = "/logout", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<LogoutResponse> logout(@RequestHeader("authorization") final String authorization) throws AuthorizationFailedException {
 
-        CustomerAuthEntity customerAuthEntity = customerService.logout(authorization);
+        String accessToken = authorization.split("Bearer ")[1];
+
+        CustomerAuthEntity customerAuthEntity = customerService.logout(accessToken);
 
         LogoutResponse logoutResponse = new LogoutResponse().id(customerAuthEntity.getCustomer().getUuid()).message("LOGGED OUT SUCCESSFULLY");
         return new ResponseEntity<LogoutResponse>(logoutResponse, HttpStatus.OK);
