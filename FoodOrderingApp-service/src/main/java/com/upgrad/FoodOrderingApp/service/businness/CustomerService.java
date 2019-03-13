@@ -133,4 +133,45 @@ public class CustomerService {
         customerAuthEntity.setLogoutAt(now);
         return customerDao.updateCustomerAuth(customerAuthEntity);
     }
+
+    /**
+     * This method helps find existing customer by access token
+     *
+     * @param accessToken customer access token
+     *
+     * @return CustomerEntity object
+     *
+     * @throws AuthorizationFailedException if access token requesting customer is not valid
+     */
+    public CustomerEntity getCustomer(String accessToken) throws AuthorizationFailedException {
+        CustomerAuthEntity customerAuthEntity = customerDao.getCustomerAuthByAccessToken(accessToken);
+
+        if (customerAuthEntity == null) {
+            throw new AuthorizationFailedException("ATHR-001", "Customer is not Logged in.");
+        }
+
+        if (customerAuthEntity.getLogoutAt() != null) {
+            throw new AuthorizationFailedException("ATHR-002", "Customer is logged out. Log in again to access this endpoint.");
+        }
+
+        ZonedDateTime now = ZonedDateTime.now();
+        if (customerAuthEntity.getExpiresAt().isBefore(now)) {
+            throw new AuthorizationFailedException("ATHR-003", "Your session is expired. Log in again to access this endpoint.");
+        }
+
+        return customerAuthEntity.getCustomer();
+    }
+
+
+    /**
+     * This method updates existing customer
+     *
+     * @param customerEntity CustomerEntity object to update
+     *
+     * @return Updated CustomerEntity object
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    public CustomerEntity updateCustomer(CustomerEntity customerEntity) {
+        return customerDao.updateCustomerEntity(customerEntity);
+    }
 }
