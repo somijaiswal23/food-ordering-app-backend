@@ -1,5 +1,6 @@
 package com.upgrad.FoodOrderingApp.service.dao;
 
+import com.upgrad.FoodOrderingApp.service.entity.CustomerAuthEntity;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
 import org.springframework.stereotype.Repository;
 
@@ -41,5 +42,17 @@ public class CustomerDao {
         } catch (NoResultException nre) {
             return null;
         }
+    }
+
+    /**
+     * This method creates new authorization from given CustomerAuthEntity object
+     *
+     * @param customerAuthEntity the CustomerAuthEntity object from which new authorization will be created
+     *
+     * @return CustomerAuthEntity object
+     */
+    public CustomerAuthEntity createCustomerAuth(CustomerAuthEntity customerAuthEntity) {
+        entityManager.persist(customerAuthEntity);
+        return customerAuthEntity;
     }
 }
