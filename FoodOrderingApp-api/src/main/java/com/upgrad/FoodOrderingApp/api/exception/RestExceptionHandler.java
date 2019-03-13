@@ -2,6 +2,7 @@ package com.upgrad.FoodOrderingApp.api.exception;
 
 import com.upgrad.FoodOrderingApp.api.model.ErrorResponse;
 import com.upgrad.FoodOrderingApp.service.exception.AuthenticationFailedException;
+import com.upgrad.FoodOrderingApp.service.exception.AuthorizationFailedException;
 import com.upgrad.FoodOrderingApp.service.exception.SignUpRestrictedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,4 +46,18 @@ public class RestExceptionHandler {
         );
     }
 
+    /**
+     * Exception handler for AuthorizationFailedException
+     *
+     * @param exe AuthorizationFailedException type object containing error code and error message
+     * @param request The web request object gives access to all the request parameters
+     *
+     * @return ResponseEntity<ErrorResponse> type object displaying error code and error message along with HttpStatus FORBIDDEN
+     */
+    @ExceptionHandler(AuthorizationFailedException.class)
+    public ResponseEntity<ErrorResponse> authorizationFailedException(AuthorizationFailedException exe, WebRequest request) {
+        return new ResponseEntity<ErrorResponse>(
+                new ErrorResponse().code(exe.getCode()).message(exe.getErrorMessage()), HttpStatus.FORBIDDEN
+        );
+    }
 }

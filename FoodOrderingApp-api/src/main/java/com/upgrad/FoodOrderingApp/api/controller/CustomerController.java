@@ -1,12 +1,14 @@
 package com.upgrad.FoodOrderingApp.api.controller;
 
 import com.upgrad.FoodOrderingApp.api.model.LoginResponse;
+import com.upgrad.FoodOrderingApp.api.model.LogoutResponse;
 import com.upgrad.FoodOrderingApp.api.model.SignupCustomerRequest;
 import com.upgrad.FoodOrderingApp.api.model.SignupCustomerResponse;
 import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerAuthEntity;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AuthenticationFailedException;
+import com.upgrad.FoodOrderingApp.service.exception.AuthorizationFailedException;
 import com.upgrad.FoodOrderingApp.service.exception.SignUpRestrictedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -30,7 +32,7 @@ public class CustomerController {
     /**
      * This api endpoint is used to signup a new customer
      *
-     * @param signupCustomerRequest This argument contains all the attributes required to create a new customer in the database
+     * @param signupCustomerRequest this argument contains all the attributes required to create a new customer in the database
      *
      * @return ResponseEntity<SignupCustomerResponse> type object along with HttpStatus CREATED
      *
@@ -74,7 +76,7 @@ public class CustomerController {
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, path = "/login", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<LoginResponse> login(@RequestBody(required = false) final String authorization) throws AuthenticationFailedException {
+    public ResponseEntity<LoginResponse> login(@RequestHeader("authorization") final String authorization) throws AuthenticationFailedException {
 
         byte[] decode;
         try {
@@ -102,5 +104,24 @@ public class CustomerController {
         headers.setAccessControlExposeHeaders(header);
 
         return new ResponseEntity<LoginResponse>(loginResponse, headers, HttpStatus.OK);
+    }
+
+    /**
+     * This api endpoint is used to logout an existing customer
+     *
+     * @param authorization customer login access token in 'Bearer <access-token>' format
+     *
+     * @return ResponseEntity<LogoutResponse> type object along with HttpStatus OK
+     *
+     * @throws AuthorizationFailedException if validation on customer access token fails
+     */
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST, path = "/logout", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<LogoutResponse> logout(@RequestHeader("authorization") final String authorization) throws AuthorizationFailedException {
+
+        CustomerAuthEntity customerAuthEntity = customerService.logout(authorization);
+
+        LogoutResponse logoutResponse = new LogoutResponse().id(customerAuthEntity.getCustomer().getUuid()).message("LOGGED OUT SUCCESSFULLY");
+        return new ResponseEntity<LogoutResponse>(logoutResponse, HttpStatus.OK);
     }
 }

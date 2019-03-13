@@ -55,4 +55,30 @@ public class CustomerDao {
         entityManager.persist(customerAuthEntity);
         return customerAuthEntity;
     }
+
+    /**
+     * This method helps find existing customer authorization by access token
+     *
+     * @param accessToken the access token which will be searched in database to find customer authorization
+     *
+     * @return CustomerAuthEntity object if given access token exists in database
+     */
+    public CustomerAuthEntity getCustomerAuthByAccessToken(String accessToken) {
+        try {
+            return entityManager.createNamedQuery("customerAuthByAccessToken", CustomerAuthEntity.class).setParameter("accessToken", accessToken).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
+    /**
+     * This method updates existing customer authorization
+     *
+     * @param customerAuthEntity CustomerAuthEntity object to update
+     *
+     * @return Updated CustomerAuthEntity object
+     */
+    public CustomerAuthEntity updateCustomerAuth(CustomerAuthEntity customerAuthEntity) {
+        return entityManager.merge(customerAuthEntity);
+    }
 }
