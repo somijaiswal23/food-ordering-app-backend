@@ -1,46 +1,50 @@
-//package com.upgrad.FoodOrderingApp.api.controller;
-//
-//import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.upgrad.FoodOrderingApp.api.model.CustomerOrderResponse;
-//import com.upgrad.FoodOrderingApp.api.model.ItemQuantity;
-//import com.upgrad.FoodOrderingApp.api.model.SaveOrderRequest;
-//import com.upgrad.FoodOrderingApp.service.exception.*;
-//import org.junit.Test;
-//import org.junit.runner.RunWith;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-//import org.springframework.boot.test.context.SpringBootTest;
-//import org.springframework.boot.test.mock.mockito.MockBean;
-//import org.springframework.http.MediaType;
-//import org.springframework.test.context.junit4.SpringRunner;
-//import org.springframework.test.web.servlet.MockMvc;
-//
-//import java.math.BigDecimal;
-//import java.util.Collections;
-//import java.util.Date;
-//import java.util.UUID;
-//
-//import static org.mockito.ArgumentMatchers.anyString;
-//import static org.mockito.Mockito.*;
-//import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-//import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-//import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-//import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-//
-//// This class contains all the test cases regarding the order controller
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
-//@AutoConfigureMockMvc
-//public class OrderControllerTest {
-//    @Autowired
-//    private MockMvc mockMvc;
-//
-//    @MockBean
-//    private OrderService mockOrderService;
-//
-//    @MockBean
-//    private CustomerService mockCustomerService;
-//
+package com.upgrad.FoodOrderingApp.api.controller;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.upgrad.FoodOrderingApp.api.model.CustomerOrderResponse;
+import com.upgrad.FoodOrderingApp.api.model.ItemQuantity;
+import com.upgrad.FoodOrderingApp.api.model.SaveOrderRequest;
+import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
+import com.upgrad.FoodOrderingApp.service.businness.OrderService;
+import com.upgrad.FoodOrderingApp.service.entity.CouponEntity;
+import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
+import com.upgrad.FoodOrderingApp.service.exception.*;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+
+import java.math.BigDecimal;
+import java.util.Collections;
+import java.util.Date;
+import java.util.UUID;
+
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+// This class contains all the test cases regarding the order controller
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@AutoConfigureMockMvc
+public class OrderControllerTest {
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private OrderService mockOrderService;
+
+    @MockBean
+    private CustomerService mockCustomerService;
+
 //    @MockBean
 //    private PaymentService mockPaymentService;
 //
@@ -431,9 +435,9 @@
 //        verify(mockOrderService, times(0)).getOrdersByCustomers(anyString());
 //    }
 //
-//    // ------------------------------------------ GET /order/coupon/{coupon_name} ------------------------------------------
-//
-//    //This test case passes when you are able to retrieve coupon details by coupon name.
+    // ------------------------------------------ GET /order/coupon/{coupon_name} ------------------------------------------
+
+    //This test case passes when you are able to retrieve coupon details by coupon name.
 //    @Test
 //    public void shouldGetCouponByName() throws Exception {
 //        when(mockCustomerService.getCustomer("database_accesstoken2"))
@@ -453,97 +457,97 @@
 //        verify(mockCustomerService, times(1)).getCustomer("database_accesstoken2");
 //        verify(mockOrderService, times(1)).getCouponByCouponName("myCoupon");
 //    }
-//
-//    //This test case passes when you have handled the exception of trying to fetch coupon details if you are not logged in.
-//    @Test
-//    public void shouldNotGetCouponByNameIfCustomerIsNotLoggedIn() throws Exception {
-//        when(mockCustomerService.getCustomer("invalid_auth"))
-//                .thenThrow(new AuthorizationFailedException("ATHR-001", "Customer is not Logged in."));
-//        mockMvc
-//                .perform(get("/order/coupon/myCoupon")
-//                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-//                        .header("authorization", "Bearer invalid_auth"))
-//                .andExpect(status().isForbidden())
-//                .andExpect(jsonPath("code").value("ATHR-001"));
-//
-//        verify(mockCustomerService, times(1)).getCustomer("invalid_auth");
-//        verify(mockOrderService, times(0)).getCouponByCouponName(anyString());
-//    }
-//
-//    //This test case passes when you have handled the exception of trying to fetch placed orders while you are already
-//    // logged out.
-//    @Test
-//    public void shouldNotGetCouponByNameIfCustomerIsLoggedOut() throws Exception {
-//        when(mockCustomerService.getCustomer("invalid_auth"))
-//                .thenThrow(new AuthorizationFailedException("ATHR-002", "Customer is logged out. Log in again to access this endpoint."));
-//        mockMvc
-//                .perform(get("/order/coupon/myCoupon")
-//                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-//                        .header("authorization", "Bearer invalid_auth"))
-//                .andExpect(status().isForbidden())
-//                .andExpect(jsonPath("code").value("ATHR-002"));
-//
-//        verify(mockCustomerService, times(1)).getCustomer("invalid_auth");
-//        verify(mockOrderService, times(0)).getCouponByCouponName(anyString());
-//    }
-//
-//    //This test case passes when you have handled the exception of trying to fetch placed orders if your session is
-//    // already expired.
-//    @Test
-//    public void shouldNotGetCouponByNameIfCustomerSessionIsExpired() throws Exception {
-//        when(mockCustomerService.getCustomer("invalid_auth"))
-//                .thenThrow(new AuthorizationFailedException("ATHR-003", "Your session is expired. Log in again to access this endpoint."));
-//        mockMvc
-//                .perform(get("/order/coupon/myCoupon")
-//                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-//                        .header("authorization", "Bearer invalid_auth"))
-//                .andExpect(status().isForbidden())
-//                .andExpect(jsonPath("code").value("ATHR-003"));
-//
-//        verify(mockCustomerService, times(1)).getCustomer("invalid_auth");
-//        verify(mockOrderService, times(0)).getCouponByCouponName(anyString());
-//    }
-//
-//    //This test case passes when you have handled the exception of trying to fetch any coupon but your coupon name
-//    // field is empty.
-//    @Test
-//    public void shouldNotGetCouponByNameIfCouponNameFieldIsEmpty() throws Exception {
-//        when(mockCustomerService.getCustomer("database_accesstoken2"))
-//                .thenReturn(new CustomerEntity());
-//
-//        when(mockOrderService.getCouponByCouponName(anyString()))
-//                .thenThrow(new CouponNotFoundException("CPF-002", "Coupon name field should not be empty"));
-//
-//        mockMvc
-//                .perform(get("/order/coupon/emptyString")
-//                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-//                        .header("authorization", "Bearer database_accesstoken2"))
-//                .andExpect(status().isNotFound())
-//                .andExpect(jsonPath("code").value("CPF-002"));
-//        verify(mockCustomerService, times(1)).getCustomer("database_accesstoken2");
-//        verify(mockOrderService, times(1)).getCouponByCouponName(anyString());
-//    }
-//
-//    //This test case passes when you have handled the exception of trying to fetch coupon details while there are no
-//    // coupon by the name you provided in the database.
-//    @Test
-//    public void shouldNotGetCouponByNameIfItDoesNotExists() throws Exception {
-//        when(mockCustomerService.getCustomer("database_accesstoken2"))
-//                .thenReturn(new CustomerEntity());
-//
-//        when(mockOrderService.getCouponByCouponName("myCoupon"))
-//                .thenThrow(new CouponNotFoundException("CPF-001", "No coupon by this name"));
-//
-//        mockMvc
-//                .perform(get("/order/coupon/myCoupon")
-//                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-//                        .header("authorization", "Bearer database_accesstoken2"))
-//                .andExpect(status().isNotFound())
-//                .andExpect(jsonPath("code").value("CPF-001"));
-//        verify(mockCustomerService, times(1)).getCustomer("database_accesstoken2");
-//        verify(mockOrderService, times(1)).getCouponByCouponName("myCoupon");
-//    }
-//
+
+    //This test case passes when you have handled the exception of trying to fetch coupon details if you are not logged in.
+    @Test
+    public void shouldNotGetCouponByNameIfCustomerIsNotLoggedIn() throws Exception {
+        when(mockCustomerService.getCustomer("invalid_auth"))
+                .thenThrow(new AuthorizationFailedException("ATHR-001", "Customer is not Logged in."));
+        mockMvc
+                .perform(get("/order/coupon/myCoupon")
+                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+                        .header("authorization", "Bearer invalid_auth"))
+                .andExpect(status().isForbidden())
+                .andExpect(jsonPath("code").value("ATHR-001"));
+
+        verify(mockCustomerService, times(1)).getCustomer("invalid_auth");
+        verify(mockOrderService, times(0)).getCouponByCouponName(anyString());
+    }
+
+    //This test case passes when you have handled the exception of trying to fetch placed orders while you are already
+    // logged out.
+    @Test
+    public void shouldNotGetCouponByNameIfCustomerIsLoggedOut() throws Exception {
+        when(mockCustomerService.getCustomer("invalid_auth"))
+                .thenThrow(new AuthorizationFailedException("ATHR-002", "Customer is logged out. Log in again to access this endpoint."));
+        mockMvc
+                .perform(get("/order/coupon/myCoupon")
+                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+                        .header("authorization", "Bearer invalid_auth"))
+                .andExpect(status().isForbidden())
+                .andExpect(jsonPath("code").value("ATHR-002"));
+
+        verify(mockCustomerService, times(1)).getCustomer("invalid_auth");
+        verify(mockOrderService, times(0)).getCouponByCouponName(anyString());
+    }
+
+    //This test case passes when you have handled the exception of trying to fetch placed orders if your session is
+    // already expired.
+    @Test
+    public void shouldNotGetCouponByNameIfCustomerSessionIsExpired() throws Exception {
+        when(mockCustomerService.getCustomer("invalid_auth"))
+                .thenThrow(new AuthorizationFailedException("ATHR-003", "Your session is expired. Log in again to access this endpoint."));
+        mockMvc
+                .perform(get("/order/coupon/myCoupon")
+                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+                        .header("authorization", "Bearer invalid_auth"))
+                .andExpect(status().isForbidden())
+                .andExpect(jsonPath("code").value("ATHR-003"));
+
+        verify(mockCustomerService, times(1)).getCustomer("invalid_auth");
+        verify(mockOrderService, times(0)).getCouponByCouponName(anyString());
+    }
+
+    //This test case passes when you have handled the exception of trying to fetch any coupon but your coupon name
+    // field is empty.
+    @Test
+    public void shouldNotGetCouponByNameIfCouponNameFieldIsEmpty() throws Exception {
+        when(mockCustomerService.getCustomer("database_accesstoken2"))
+                .thenReturn(new CustomerEntity());
+
+        when(mockOrderService.getCouponByCouponName(anyString()))
+                .thenThrow(new CouponNotFoundException("CPF-002", "Coupon name field should not be empty"));
+
+        mockMvc
+                .perform(get("/order/coupon/emptyString")
+                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+                        .header("authorization", "Bearer database_accesstoken2"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("code").value("CPF-002"));
+        verify(mockCustomerService, times(1)).getCustomer("database_accesstoken2");
+        verify(mockOrderService, times(1)).getCouponByCouponName(anyString());
+    }
+
+    //This test case passes when you have handled the exception of trying to fetch coupon details while there are no
+    // coupon by the name you provided in the database.
+    @Test
+    public void shouldNotGetCouponByNameIfItDoesNotExists() throws Exception {
+        when(mockCustomerService.getCustomer("database_accesstoken2"))
+                .thenReturn(new CustomerEntity());
+
+        when(mockOrderService.getCouponByCouponName("myCoupon"))
+                .thenThrow(new CouponNotFoundException("CPF-001", "No coupon by this name"));
+
+        mockMvc
+                .perform(get("/order/coupon/myCoupon")
+                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+                        .header("authorization", "Bearer database_accesstoken2"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("code").value("CPF-001"));
+        verify(mockCustomerService, times(1)).getCustomer("database_accesstoken2");
+        verify(mockOrderService, times(1)).getCouponByCouponName("myCoupon");
+    }
+
 //    // ------------------------------------------ POJO Builder ------------------------------------------
 //
 //    private SaveOrderRequest getSaveOrderRequest() {
@@ -605,6 +609,6 @@
 //        return new OrderEntity(orderId, 200.50, couponEntity, 10.0,
 //                orderDate, paymentEntity, customerEntity, addressEntity, restaurantEntity);
 //    }
-//
-//
-//}
+
+
+}
