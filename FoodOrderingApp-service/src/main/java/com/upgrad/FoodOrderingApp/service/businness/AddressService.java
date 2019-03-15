@@ -68,4 +68,14 @@ public class AddressService {
         return addressDao.getState(id.toString());
     }
 
+    /**
+     * This method implements the business logic for 'Get All States' endpoint
+     *
+     */
+
+    public List<StateEntity> getAllStates() {
+
+        return addressDao.getAllStates();
+    }
+
 }

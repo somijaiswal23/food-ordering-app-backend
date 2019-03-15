@@ -47,4 +47,17 @@ public class AddressDao {
         }
     }
 
+    /**
+     * This method helps to fetch all states
+     *
+     * @return List<StateEntity> object
+     */
+    public List<StateEntity> getAllStates() {
+        try {
+            return entityManager.createNamedQuery("allStatesMethods", StateEntity.class).getResultList();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
 }

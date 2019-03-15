@@ -114,4 +114,28 @@ public class AddressController {
 
 
     }
+
+    /**
+     * This api endpoint is used retrieve all the states in the database, for a customer
+     *
+     * @return ResponseEntity<AllStatesResponse> type object along with HttpStatus OK
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/states", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<AllStatesResponse> getAllStates() {
+
+        /** Get all states */
+
+        List<StateEntity> statesList = addressService.getAllStates();
+        /** Response for Get All States */
+        AllStatesResponse allStatesResponse = new AllStatesResponse();
+
+        for (StateEntity stateEntity : statesList) {
+            AllStatesResponse listState = new AllStatesResponse()
+                    .id(UUID.fromString(stateEntity.getUuid()))
+                    .stateName(stateEntity.getStatename());
+            allStatesResponse.addStatesMethod(listState);
+        }
+
+        return new ResponseEntity<AllStatesResponse>(allStatesResponse, HttpStatus.OK);
+    }
 }
