@@ -2,6 +2,7 @@ package com.upgrad.FoodOrderingApp.service.businness;
 
 import com.upgrad.FoodOrderingApp.service.dao.CategoryDao;
 import com.upgrad.FoodOrderingApp.service.entity.CategoryEntity;
+import com.upgrad.FoodOrderingApp.service.exception.CategoryNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +19,34 @@ public class CategoryService {
     /**
      * This method implements the business logic for 'category' endpoint
      *
-     * @return
+     * @return List<CategoryEntity> object
      */
     public List<CategoryEntity> getAllCategoriesOrderedByName() {
         return categoryDao.getAllCategories().stream()
                 .sorted(Comparator.comparing(CategoryEntity::getCategoryName))
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * This method implements the business logic for 'getCategoryById' endpoint
+     *
+     * @param categoryUuid UUID of category
+     *
+     * @return CategoryEntity object
+     *
+     * @throws CategoryNotFoundException If category is not found for given UUID
+     */
+    public CategoryEntity getCategoryById(String categoryUuid) throws CategoryNotFoundException {
+        if (categoryUuid.equals("")) {
+            throw new CategoryNotFoundException("CNF-001", "Category id field should not be empty");
+        }
+
+        CategoryEntity categoryEntity = categoryDao.getCategoryByUuid(categoryUuid);
+
+        if (categoryEntity == null) {
+            throw new CategoryNotFoundException("CNF-002", "No category by this id");
+        }
+
+        return categoryEntity;
     }
 }

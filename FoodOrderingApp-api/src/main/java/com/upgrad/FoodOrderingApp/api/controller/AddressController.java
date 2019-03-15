@@ -2,6 +2,7 @@ package com.upgrad.FoodOrderingApp.api.controller;
 
 import com.upgrad.FoodOrderingApp.service.businness.AddressService;
 import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
+import com.upgrad.FoodOrderingApp.service.dao.AddressDao;
 import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
 import com.upgrad.FoodOrderingApp.service.entity.StateEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AddressNotFoundException;
@@ -75,11 +76,14 @@ public class AddressController {
     /**
      * This api endpoint is used retrieve all the saved addresses in the database, for a customer
      *
+     *@param authorization customer login access token in 'Bearer <access-token>' format
+     *
      * @return ResponseEntity<AllAddressesResponse> type object along with HttpStatus OK
      */
     @RequestMapping(method = RequestMethod.GET, path = "/customer", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<AllAddressesResponse> getAllSavedAddress(@RequestBody(required = false) final AllAddressesRequest allAddressesRequest, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UpdateAddressException
-    {
+    public ResponseEntity<AllAddressesResponse> getAllSavedAddress(@RequestBody(required = false) final AllAddressesRequest allAddressesRequest, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException{
+
+
         String accessToken = authorization.split("Bearer ")[1];
         CustomerEntity customerEntity = customerService.getCustomer(accessToken);
 
@@ -104,9 +108,12 @@ public class AddressController {
                     .city(addressEntity.getCity())
                     .pincode(addressEntity.getPincode())
                     .state.id(stateData.getId())
-                    .state_name(stateData.getStatename());
+                           .state_name(stateData.getStatename());
             addressListResponse.addAddressesList(addressesResponse);
         }
+
+        return new ResponseEntity<AddressesResponse>(addressListResponse, HttpStatus.OK);
+
     }
 
     /**
