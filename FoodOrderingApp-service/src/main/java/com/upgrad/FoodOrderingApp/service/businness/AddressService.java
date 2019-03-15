@@ -59,6 +59,18 @@ public class AddressService {
     }
 
     /**
+
+     * This method returns State Name
+     *
+     */
+
+    public StateEntity getstateEntity(StateEntity id){
+        return addressDao.getState(id.toString());
+    }
+
+    /**
+
+
      * This method implements the business logic for 'Get All States' endpoint
      *
      */
