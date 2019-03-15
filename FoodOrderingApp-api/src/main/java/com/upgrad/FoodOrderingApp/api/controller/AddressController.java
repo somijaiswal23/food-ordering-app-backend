@@ -3,7 +3,8 @@ package com.upgrad.FoodOrderingApp.api.controller;
 import com.upgrad.FoodOrderingApp.service.businness.AddressService;
 import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
 import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
-import com.upgrad.FoodOrderingApp.service.entity.CategoryEntity;
+import com.upgrad.FoodOrderingApp.service.entity.PaymentEntity;
+import com.upgrad.FoodOrderingApp.service.entity.StateEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AddressNotFoundException;
 import com.upgrad.FoodOrderingApp.service.exception.SaveAddressException;
 import com.upgrad.FoodOrderingApp.service.exception.AuthorizationFailedException;
@@ -83,5 +84,35 @@ public class AddressController {
         /** Get all saved Addresses */
 
         List<AddressEntity> addressesList = addressService.getAllAddresses();
+
+
+
+
     }
+
+    /**
+     * This api endpoint is used retrieve all the states in the database, for a customer
+     *
+     * @return ResponseEntity<AllStatesResponse> type object along with HttpStatus OK
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/states", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<AllStatesResponse> getAllStates() {
+
+        /** Get all states */
+
+        List<StateEntity> statesList = addressService.getAllStates();
+        /** Response for Get All States */
+        AllStatesResponse allStatesResponse = new AllStatesResponse();
+
+        for (StateEntity stateEntity : statesList) {
+            AllStatesResponse listState = new AllStatesResponse()
+                    .id(UUID.fromString(stateEntity.getUuid()))
+                    .stateName(stateEntity.getStatename());
+            allStatesResponse.addStatesMethod(listState);
+        }
+
+        return new ResponseEntity<AllStatesResponse>(allStatesResponse, HttpStatus.OK);
+    }
+
+
 }

@@ -2,6 +2,7 @@ package com.upgrad.FoodOrderingApp.service.businness;
 
 import com.upgrad.FoodOrderingApp.service.dao.AddressDao;
 import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
+import com.upgrad.FoodOrderingApp.service.entity.StateEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AddressNotFoundException;
 import com.upgrad.FoodOrderingApp.service.exception.SaveAddressException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,7 @@ public class AddressService {
     @Transactional(propagation = Propagation.REQUIRED)
     public AddressEntity saveAddress(AddressEntity address) throws SaveAddressException, AddressNotFoundException{
 
-        //Validation for format of Pincode
-        /**
+        /** Validation for format of Pincode
          * This is to validate Indian Post code.
          * [1-9]: Matches exactly one digit from 1 to 9.
          * [0-9]{5}: Matches exactly five digits in the inclusive range 0-9
@@ -43,7 +43,7 @@ public class AddressService {
         }
 
         //Validation for state
-        if(addressDao.getState(address.getStateid()) == null){
+        if(addressDao.getState(address.getStateid().toString()) == null){
             throw new AddressNotFoundException("ANF-002", "No state by this id");
         }
     }
@@ -56,6 +56,16 @@ public class AddressService {
     public List<AddressEntity> getAllAddresses() {
 
             return addressDao.getAllAddresses();
+    }
+
+    /**
+     * This method implements the business logic for 'Get All States' endpoint
+     *
+     */
+
+    public List<StateEntity> getAllStates() {
+
+        return addressDao.getAllStates();
     }
 
 }

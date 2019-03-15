@@ -15,7 +15,9 @@ import java.io.Serializable;
 @Table(name = "state")
 @NamedQueries({
         @NamedQuery(name = "statebyUUID", query = "select c from StateEntity c where c.uuid = :uuid"),
+        @NamedQuery(name = "allStatesMethods", query = "select q from StateEntity q"),
 })
+
 
 public class StateEntity implements Serializable {
 
