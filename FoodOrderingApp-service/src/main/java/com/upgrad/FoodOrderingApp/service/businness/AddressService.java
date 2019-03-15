@@ -29,8 +29,12 @@ public class AddressService {
     public AddressEntity saveAddress(AddressEntity address) throws SaveAddressException, AddressNotFoundException{
 
         //Validation for format of Pincode
-        if(!address.getPincode().matches("^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#@$%&*!^-]).{8,}$") ||
-            address.getPincode().length() != 6){
+        /**
+         * This is to validate Indian Post code.
+         * [1-9]: Matches exactly one digit from 1 to 9.
+         * [0-9]{5}: Matches exactly five digits in the inclusive range 0-9
+         */
+        if(!address.getPincode().matches("^[1-9][0-9]{5}$"){
             throw new SaveAddressException("SAR-002", "Invalid pincode");
         }
 
