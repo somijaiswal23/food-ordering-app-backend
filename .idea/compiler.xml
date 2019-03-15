@@ -22,7 +22,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="FoodOrderingApp-api" options="-parameters" />
       <module name="FoodOrderingApp-db" options="-parameters" />
-      <module name="FoodOrderingApp-service" options="-parameters" />
+      <module name="FoodOrderingApp-service" options="" />
     </option>
   </component>
 </project>
