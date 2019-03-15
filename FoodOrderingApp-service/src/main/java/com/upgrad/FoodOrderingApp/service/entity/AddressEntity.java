@@ -10,7 +10,8 @@ import java.io.Serializable;
 /**
  * AddressEntity class contains all the attributes to be mapped to all the fields in 'address' table in the database
  */
-
+@Entity
+@Table(name = "address")
 public class AddressEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
