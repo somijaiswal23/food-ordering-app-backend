@@ -2,8 +2,10 @@ package com.upgrad.FoodOrderingApp.api.controller;
 
 import com.upgrad.FoodOrderingApp.service.businness.AddressService;
 import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
+import com.upgrad.FoodOrderingApp.service.dao.AddressDao;
 import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
 import com.upgrad.FoodOrderingApp.service.entity.CategoryEntity;
+import com.upgrad.FoodOrderingApp.service.entity.StateEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AddressNotFoundException;
 import com.upgrad.FoodOrderingApp.service.exception.SaveAddressException;
 import com.upgrad.FoodOrderingApp.service.exception.AuthorizationFailedException;
@@ -73,15 +75,43 @@ public class AddressController {
     /**
      * This api endpoint is used retrieve all the saved addresses in the database, for a customer
      *
+     *@param authorization customer login access token in 'Bearer <access-token>' format
+     *
      * @return ResponseEntity<AllAddressesResponse> type object along with HttpStatus OK
      */
     @RequestMapping(method = RequestMethod.GET, path = "/customer", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<AllAddressesResponse> getAllSavedAddress(@RequestBody(required = false) final AllAddressesRequest allAddressesRequest, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException{
+
+
         String accessToken = authorization.split("Bearer ")[1];
         CustomerEntity customerEntity = customerService.getCustomer(accessToken);
 
         /** Get all saved Addresses */
 
         List<AddressEntity> addressesList = addressService.getAllAddresses();
+
+        /** Create Response for Saved Addresses*/
+
+        AllAddressesResponse addressListResponse = new AllAddressesResponse();
+
+        for (AddressEntity addressEntity : addressesList) {
+
+            StateEntity stateEntity = new StateEntity();
+            StateEntity stateData = addressService.getstateEntity(addressEntity.getStateid());
+
+            AllAddressesResponse addressesResponse = new AllAddressesResponse()
+                    .id(UUID.fromString(addressEntity.getUuid()))
+                    .flat_building_name(addressEntity.getFlatNumber())
+                    .locality(addressEntity.getLocality())
+                    .city(addressEntity.getCity())
+                    .pincode(addressEntity.getPincode())
+                    .state.id(stateData.getId())
+                           .state_name(stateData.getStatename());
+            addressListResponse.addAddressesList(addressesResponse);
+        }
+
+        return new ResponseEntity<AddressesResponse>(addressListResponse, HttpStatus.OK);
+
+
     }
 }
