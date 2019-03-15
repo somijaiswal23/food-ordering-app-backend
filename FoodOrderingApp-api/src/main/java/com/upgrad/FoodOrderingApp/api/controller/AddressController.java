@@ -4,7 +4,6 @@ import com.upgrad.FoodOrderingApp.service.businness.AddressService;
 import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
 import com.upgrad.FoodOrderingApp.service.dao.AddressDao;
 import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
-import com.upgrad.FoodOrderingApp.service.entity.CategoryEntity;
 import com.upgrad.FoodOrderingApp.service.entity.StateEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AddressNotFoundException;
 import com.upgrad.FoodOrderingApp.service.exception.SaveAddressException;
@@ -90,6 +89,7 @@ public class AddressController {
 
         List<AddressEntity> addressesList = addressService.getAllAddresses();
 
+
         /** Create Response for Saved Addresses*/
 
         AllAddressesResponse addressListResponse = new AllAddressesResponse();
@@ -111,6 +111,7 @@ public class AddressController {
         }
 
         return new ResponseEntity<AddressesResponse>(addressListResponse, HttpStatus.OK);
+
 
 
     }
@@ -138,4 +139,6 @@ public class AddressController {
 
         return new ResponseEntity<AllStatesResponse>(allStatesResponse, HttpStatus.OK);
     }
+
+
 }

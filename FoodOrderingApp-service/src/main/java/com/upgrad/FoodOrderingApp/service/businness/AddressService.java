@@ -33,8 +33,7 @@ public class AddressService {
     @Transactional(propagation = Propagation.REQUIRED)
     public AddressEntity saveAddress(AddressEntity address) throws SaveAddressException, AddressNotFoundException{
 
-        //Validation for format of Pincode
-        /**
+        /** Validation for format of Pincode
          * This is to validate Indian Post code.
          * [1-9]: Matches exactly one digit from 1 to 9.
          * [0-9]{5}: Matches exactly five digits in the inclusive range 0-9
@@ -44,7 +43,7 @@ public class AddressService {
         }
 
         //Validation for state
-        if(addressDao.getState(address.getStateid()) == null){
+        if(addressDao.getState(address.getStateid().toString()) == null){
             throw new AddressNotFoundException("ANF-002", "No state by this id");
         }
     }
@@ -60,6 +59,7 @@ public class AddressService {
     }
 
     /**
+
      * This method returns State Name
      *
      */
@@ -69,6 +69,8 @@ public class AddressService {
     }
 
     /**
+
+
      * This method implements the business logic for 'Get All States' endpoint
      *
      */

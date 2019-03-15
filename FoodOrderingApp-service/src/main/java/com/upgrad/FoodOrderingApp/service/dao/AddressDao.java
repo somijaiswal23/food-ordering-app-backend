@@ -20,7 +20,7 @@ public class AddressDao {
     private EntityManager entityManager;
 
     /**
-     * This method helps find existing State by StateID
+     * This method helps fetch existing State by StateID
      *
      * @param stateUUID the stateid which will be searched in database to find existing state
      *
@@ -35,9 +35,9 @@ public class AddressDao {
     }
 
     /**
-     * This method helps find all saved addresses
+     * This method helps fetch all saved addresses
      *
-     * @return List<AllAddresses> object
+     * @return List<AddressEntity> object
      */
     public List<AddressEntity> getAllAddresses() {
         try {
