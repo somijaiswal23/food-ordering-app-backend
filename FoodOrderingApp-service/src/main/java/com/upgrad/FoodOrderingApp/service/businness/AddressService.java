@@ -20,15 +20,15 @@ public class AddressService {
 
     @Autowired
     private AddressDao addressDao;
-/**
- * This method implements the business logic for 'save address' endpoint
- *
- * @param address new address will be created from given AddressEntity object
- *
- * @return AddressEntity object
- *
- * @throws SaveAddressException exception if any of the validation fails on customer details
- */
+    /**
+     * This method implements the business logic for 'save address' endpoint
+     *
+     * @param address new address will be created from given AddressEntity object
+     *
+     * @return AddressEntity object
+     *
+     * @throws SaveAddressException exception if any of the validation fails on customer details
+     */
 
     @Transactional(propagation = Propagation.REQUIRED)
     public AddressEntity saveAddress(AddressEntity address) throws SaveAddressException, AddressNotFoundException{
@@ -48,14 +48,23 @@ public class AddressService {
         }
     }
 
-/**
- * This method implements the business logic for 'Get All Saved Address' endpoint
- *
- */
+    /**
+     * This method implements the business logic for 'Get All Saved Address' endpoint
+     *
+     */
 
     public List<AddressEntity> getAllAddresses() {
 
-            return addressDao.getAllAddresses();
+        return addressDao.getAllAddresses();
+    }
+
+    /**
+     * This method returns State Name
+     *
+     */
+
+    public StateEntity getstateEntity(StateEntity id){
+        return addressDao.getState(id.toString());
     }
 
     /**
@@ -66,6 +75,16 @@ public class AddressService {
     public List<StateEntity> getAllStates() {
 
         return addressDao.getAllStates();
+    }
+
+    /**
+     * This method implements the business logic for 'Get Address by Id' endpoint
+     *
+     */
+
+    public AddressEntity getAddressById(String id) {
+
+         return addressDao.getAddressById(id);
     }
 
 }
