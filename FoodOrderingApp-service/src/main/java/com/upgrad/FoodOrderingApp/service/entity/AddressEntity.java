@@ -15,6 +15,8 @@ import java.io.Serializable;
 @NamedQueries(
         {
                 @NamedQuery(name = "allAddressesMethods", query = "select q from AddressEntity q"),
+                @NamedQuery(name = "UUID", query = "select c from AddressEntity c where c.uuid = :uuid"),
+
         }
 )
 

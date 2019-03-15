@@ -60,4 +60,18 @@ public class AddressDao {
         }
     }
 
+    /**
+     * This method helps to fetch address by id
+     *
+     * @return AddressEntity object
+     */
+    public AddressEntity getAddressById(String uuid) {
+        try {
+            return entityManager.createNamedQuery("getAddressbyId", AddressEntity.class).setParameter("UUID", uuid).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
+
 }

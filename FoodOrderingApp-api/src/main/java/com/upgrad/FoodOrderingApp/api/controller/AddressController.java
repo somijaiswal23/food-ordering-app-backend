@@ -9,6 +9,7 @@ import com.upgrad.FoodOrderingApp.service.exception.AddressNotFoundException;
 import com.upgrad.FoodOrderingApp.service.exception.SaveAddressException;
 import com.upgrad.FoodOrderingApp.service.exception.AuthorizationFailedException;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
+import com.upgrad.FoodOrderingApp.service.exception.UpdateAddressException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -39,7 +40,8 @@ public class AddressController {
      */
 
     @RequestMapping(method = RequestMethod.POST, path = "", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<SaveAddressResponse> saveAddress(@RequestBody(required = false) final SaveAddressRequest saveAddressRequest, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, SaveAddressException, AddressNotFoundException {
+    public ResponseEntity<SaveAddressResponse> saveAddress(@RequestBody(required = false) final SaveAddressRequest saveAddressRequest, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, SaveAddressException, AddressNotFoundException
+    {
 
         String accessToken = authorization.split("Bearer ")[1];
         CustomerEntity customerEntity = customerService.getCustomer(accessToken);
@@ -112,8 +114,6 @@ public class AddressController {
 
         return new ResponseEntity<AddressesResponse>(addressListResponse, HttpStatus.OK);
 
-
-
     }
 
     /**
@@ -122,11 +122,13 @@ public class AddressController {
      * @return ResponseEntity<AllStatesResponse> type object along with HttpStatus OK
      */
     @RequestMapping(method = RequestMethod.GET, path = "/states", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<AllStatesResponse> getAllStates() {
+    public ResponseEntity<AllStatesResponse> getAllStates()
+    {
 
         /** Get all states */
 
         List<StateEntity> statesList = addressService.getAllStates();
+
         /** Response for Get All States */
         AllStatesResponse allStatesResponse = new AllStatesResponse();
 
@@ -138,7 +140,32 @@ public class AddressController {
         }
 
         return new ResponseEntity<AllStatesResponse>(allStatesResponse, HttpStatus.OK);
+
     }
 
+    /**
+     * This api endpoint is used to delete an address
+     * @param uuid Address uuid is used to fetch the correct address
+     *        authorization customer login access token in 'Bearer <access-token>' format
+     * @return ResponseEntity<DeleteAddResponse> with HTTP status ok
+     */
+    @RequestMapping(method = RequestMethod.DELETE, path = "/{address_UUID}")
+    public ResponseEntity<DeleteAddResponse> deleteAddResponse (@PathVariable("address_UUID") final String uuid, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UpdateAddressException, AddressNotFoundException {
 
+        String accessToken = authorization.split("Bearer ")[1];
+        CustomerEntity customerEntity = customerService.getCustomer(accessToken);
+
+        if(uuid == null){
+            throw new UpdateAddressException("UAR-005", "Address id can not be empty");
+        }
+
+       AddressEntity addressEntity = addressService.getAddressById(uuid);
+
+       if(addressEntity.getId() == null){
+        throw new AddressNotFoundException("ANF-003","No Address by this id");
+       }
+
+        DeleteAddResponse addDeleteResponse = new DeleteAddResponse().id(uuid).status("ADDRESS DELETED SUCCESSFULLY");
+        return new ResponseEntity<DeleteAddResponse>(addDeleteResponse, HttpStatus.OK);
+    }
 }
