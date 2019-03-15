@@ -12,6 +12,12 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "address")
+@NamedQueries(
+        {
+                @NamedQuery(name = "allAddressesMethods", query = "select q from AddressEntity q"),
+        }
+)
+
 public class AddressEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

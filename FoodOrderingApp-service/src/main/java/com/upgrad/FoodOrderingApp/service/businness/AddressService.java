@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Service
 public class AddressService {
@@ -42,9 +46,16 @@ public class AddressService {
         if(addressDao.getState(address.getStateid()) == null){
             throw new AddressNotFoundException("ANF-002", "No state by this id");
         }
-
-
     }
 
+/**
+ * This method implements the business logic for 'Get All Saved Address' endpoint
+ *
+ */
+
+    public List<AddressEntity> getAllAddresses() {
+
+            return addressDao.getAllAddresses();
+    }
 
 }
