@@ -17,9 +17,29 @@ public class CategoryDao {
     @PersistenceContext
     private EntityManager entityManager;
 
+    /**
+     * This method finds all categories
+     *
+     * @return List<CategoryEntity> object
+     */
     public List<CategoryEntity> getAllCategories() {
         try {
             return entityManager.createNamedQuery("allCategories", CategoryEntity.class).getResultList();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
+    /**
+     * This methods returns category entity for a given uuid
+     *
+     * @param uuid UUID of category
+     *
+     * @return CategoryEntity object
+     */
+    public CategoryEntity getCategoryByUuid(String uuid) {
+        try {
+            return entityManager.createNamedQuery("categoryByUuid", CategoryEntity.class).setParameter("uuid", uuid).getSingleResult();
         } catch (NoResultException nre) {
             return null;
         }

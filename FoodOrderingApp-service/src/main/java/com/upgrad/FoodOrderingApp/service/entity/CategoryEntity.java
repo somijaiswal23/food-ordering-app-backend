@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * CategoryEntity class contains all the attributes to be mapped to all the fields in 'category' table in the database
@@ -12,6 +14,7 @@ import java.io.Serializable;
 @Table(name = "category")
 @NamedQueries({
         @NamedQuery(name = "allCategories", query = "select q from CategoryEntity q"),
+        @NamedQuery(name = "categoryByUuid", query = "select q from CategoryEntity q where q.uuid = :uuid")
 })
 public class CategoryEntity implements Serializable {
 
@@ -28,6 +31,19 @@ public class CategoryEntity implements Serializable {
     @NotNull
     @Size(max = 255)
     private String categoryName;
+
+    @ManyToMany
+    @JoinTable(name = "category_item", joinColumns = @JoinColumn(name = "category_id"),
+        inverseJoinColumns = @JoinColumn(name = "item_id"))
+    private List<ItemEntity> items = new ArrayList<>();
+
+    public List<ItemEntity> getItems() {
+        return items;
+    }
+
+    public void setItems(List<ItemEntity> items) {
+        this.items = items;
+    }
 
     public Integer getId() {
         return id;
