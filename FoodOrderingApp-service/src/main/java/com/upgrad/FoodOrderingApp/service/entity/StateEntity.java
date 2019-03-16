@@ -14,11 +14,9 @@ import java.io.Serializable;
 @Entity
 @Table(name = "state")
 @NamedQueries({
-        @NamedQuery(name = "statebyUUID", query = "select c from StateEntity c where c.uuid = :uuid"),
+        @NamedQuery(name = "stateByUUID", query = "select c from StateEntity c where c.uuid = :uuid"),
         @NamedQuery(name = "allStatesMethods", query = "select q from StateEntity q"),
 })
-
-
 public class StateEntity implements Serializable {
 
     @Id
@@ -29,7 +27,6 @@ public class StateEntity implements Serializable {
     @NotNull
     @Size(max = 200)
     private String uuid;
-
 
     @Column(name = "state_name")
     @NotNull

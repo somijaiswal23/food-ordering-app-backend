@@ -1,11 +1,11 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
-//import org.apache.commons.lang3.builder.ToStringExclude;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * AddressEntity class contains all the attributes to be mapped to all the fields in 'address' table in the database
@@ -14,13 +14,13 @@ import java.io.Serializable;
 @Table(name = "address")
 @NamedQueries(
         {
-                @NamedQuery(name = "allAddressesMethods", query = "select q from AddressEntity q"),
+                @NamedQuery(name = "allAddresses", query = "select q from AddressEntity q"),
                 @NamedQuery(name = "UUID", query = "select c from AddressEntity c where c.uuid = :uuid"),
 
         }
 )
-
 public class AddressEntity implements Serializable{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -50,16 +50,27 @@ public class AddressEntity implements Serializable{
     @Size(max = 30)
     private String pincode;
 
-    @ManyToOne
-    //@OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToOne
     @JoinColumn(name = "state_id")
     @NotNull
     private StateEntity stateid;
 
     @Column(name = "active")
     @NotNull
-    @Size(max = 1)
-    private int active;
+    private Integer active;
+
+    @ManyToMany
+    @JoinTable(name = "category_item", joinColumns = @JoinColumn(name = "address_id"),
+            inverseJoinColumns = @JoinColumn(name = "customer_id"))
+    private List<CustomerEntity> customer = new ArrayList<>();
+
+    public List<CustomerEntity> getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(List<CustomerEntity> customer) {
+        this.customer = customer;
+    }
 
     public Integer getId() {
         return id;
@@ -117,11 +128,11 @@ public class AddressEntity implements Serializable{
         this.stateid = stateid;
     }
 
-    public int getActive() {
+    public Integer getActive() {
         return active;
     }
 
-    public void setActive(int active) {
+    public void setActive(Integer active) {
         this.active = active;
     }
 }

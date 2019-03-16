@@ -12,26 +12,15 @@ import java.util.List;
 /**
  * AddressDao class provides the database access for all the endpoints in address controller
  */
-
 @Repository
 public class AddressDao {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    /**
-     * This method helps fetch existing State by StateID
-     *
-     * @param stateUUID the stateid which will be searched in database to find existing state
-     *
-     * @return StateEntity object if given state exists in database
-     */
-    public StateEntity getState(String stateUUID) {
-        try {
-            return entityManager.createNamedQuery("statebyUUID", StateEntity.class).setParameter("stateUUID", stateUUID).getSingleResult();
-        } catch (NoResultException nre) {
-            return null;
-        }
+    public AddressEntity createAddress(AddressEntity addressEntity) {
+        entityManager.persist(addressEntity);
+        return addressEntity;
     }
 
     /**
@@ -41,20 +30,7 @@ public class AddressDao {
      */
     public List<AddressEntity> getAllAddresses() {
         try {
-            return entityManager.createNamedQuery("allAddressesMethods", AddressEntity.class).getResultList();
-        } catch (NoResultException nre) {
-            return null;
-        }
-    }
-
-    /**
-     * This method helps to fetch all states
-     *
-     * @return List<StateEntity> object
-     */
-    public List<StateEntity> getAllStates() {
-        try {
-            return entityManager.createNamedQuery("allStatesMethods", StateEntity.class).getResultList();
+            return entityManager.createNamedQuery("allAddresses", AddressEntity.class).getResultList();
         } catch (NoResultException nre) {
             return null;
         }
@@ -72,6 +48,4 @@ public class AddressDao {
             return null;
         }
     }
-
-
 }
