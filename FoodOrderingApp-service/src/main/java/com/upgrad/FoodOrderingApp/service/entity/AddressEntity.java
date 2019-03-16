@@ -1,6 +1,6 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
-//import org.apache.commons.lang3.builder.ToStringExclude;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -51,7 +51,6 @@ public class AddressEntity implements Serializable{
     private String pincode;
 
     @ManyToOne
-    //@OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "state_id")
     @NotNull
     private StateEntity stateid;
