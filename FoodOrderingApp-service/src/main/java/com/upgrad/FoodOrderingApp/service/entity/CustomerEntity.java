@@ -6,6 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * CustomerEntity class contains all the attributes to be mapped to all the fields in 'customer' table in the database
@@ -49,12 +51,25 @@ public class CustomerEntity implements Serializable {
     @ToStringExclude
     @NotNull
     @Size(max = 255)
-    private String passoword;
+    private String password;
 
     @Column(name = "salt")
     @NotNull
     @Size(max = 255)
     private String salt;
+
+    @OneToMany
+    @JoinTable(name = "customer_address", joinColumns = @JoinColumn(name = "customer_id"),
+        inverseJoinColumns = @JoinColumn(name = "address_id"))
+    private List<AddressEntity> addresses = new ArrayList<>();
+
+    public List<AddressEntity> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<AddressEntity> addresses) {
+        this.addresses = addresses;
+    }
 
     public Integer getId() {
         return id;
@@ -105,11 +120,11 @@ public class CustomerEntity implements Serializable {
     }
 
     public String getPassoword() {
-        return passoword;
+        return password;
     }
 
-    public void setPassoword(String passoword) {
-        this.passoword = passoword;
+    public void setPassoword(String password) {
+        this.password = password;
     }
 
     public String getSalt() {

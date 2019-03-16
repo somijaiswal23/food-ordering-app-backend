@@ -106,7 +106,7 @@ public class CustomerService {
     /**
      * This method implements the business logic for 'logout' endpoint
      *
-     * @param authorization Customer access token in 'Bearer <access-token>' format
+     * @param accessToken Customer access token in 'Bearer <access-token>' format
      *
      * @return Updated CustomerAuthEntity object
      *

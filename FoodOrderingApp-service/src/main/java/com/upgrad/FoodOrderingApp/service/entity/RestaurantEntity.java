@@ -9,17 +9,14 @@ import java.io.Serializable;
 /**
  * RestaurantEntity class contains all the attributes to be mapped to all the fields in 'restaurant' table in the database
  */
-
 @Entity
 @Table(name = "restaurant")
 
 @NamedQueries(
         {
-                @NamedQuery(name = "allRestaurantsMethods", query = "select q from RestaurantEntity q order by q.cutomerrating"),
-
+                @NamedQuery(name = "allRestaurantsMethods", query = "select q from RestaurantEntity q order by q.customerRating"),
         }
 )
-
 public class RestaurantEntity implements Serializable {
 
     @Id
@@ -34,32 +31,29 @@ public class RestaurantEntity implements Serializable {
     @Column(name = "restaurant_name")
     @NotNull
     @Size(max = 50)
-    private String restaurantname;
+    private String restaurantName;
 
     @Column(name = "photo_url")
     @NotNull
     @Size(max = 255)
-    private String photourl;
+    private String photoUrl;
 
     @Column(name = "customer_rating")
     @NotNull
-    @Size(max = 2)
-    private int customerrating;
+    private Integer customerRating;
 
-    @Column(name = "avg_price_two")
+    @Column(name = "average_price_for_two")
     @NotNull
-    @Size(max = 5)
-    private int avgpricefortwo;
+    private Integer avgPriceForTwo;
 
-    @Column(name = "no_customer_rated")
+    @Column(name = "number_of_customers_rated")
     @NotNull
-    @Size(max = 10)
-    private int noofcustomerrated;
+    private Integer customersRated;
 
     @ManyToOne
     @JoinColumn(name = "address_id")
     @NotNull
-    private AddressEntity addressid;
+    private AddressEntity address;
 
     public Integer getId() {
         return id;
@@ -77,51 +71,51 @@ public class RestaurantEntity implements Serializable {
         this.uuid = uuid;
     }
 
-    public String getRestaurantname() {
-        return restaurantname;
+    public String getRestaurantName() {
+        return restaurantName;
     }
 
-    public void setRestaurantname(String restaurantname) {
-        this.restaurantname = restaurantname;
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 
-    public String getPhotourl() {
-        return photourl;
+    public String getPhotoUrl() {
+        return photoUrl;
     }
 
-    public void setPhotourl(String photourl) {
-        this.photourl = photourl;
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 
-    public int getCustomerrating() {
-        return customerrating;
+    public Integer getCustomerRating() {
+        return customerRating;
     }
 
-    public void setCustomerrating(int customerrating) {
-        this.customerrating = customerrating;
+    public void setCustomerRating(Integer customerRating) {
+        this.customerRating = customerRating;
     }
 
-    public int getAvgpricefortwo() {
-        return avgpricefortwo;
+    public Integer getAvgPriceForTwo() {
+        return avgPriceForTwo;
     }
 
-    public void setAvgpricefortwo(int avgpricefortwo) {
-        this.avgpricefortwo = avgpricefortwo;
+    public void setAvgPriceForTwo(Integer avgPriceForTwo) {
+        this.avgPriceForTwo = avgPriceForTwo;
     }
 
-    public int getNoofcustomerrated() {
-        return noofcustomerrated;
+    public Integer getCustomersRated() {
+        return customersRated;
     }
 
-    public void setNoofcustomerrated(int noofcustomerrated) {
-        this.noofcustomerrated = noofcustomerrated;
+    public void setCustomersRated(Integer customersRated) {
+        this.customersRated = customersRated;
     }
 
-    public AddressEntity getAddressid() {
-        return addressid;
+    public AddressEntity getAddress() {
+        return address;
     }
 
-    public void setAddressid(AddressEntity addressid) {
-        this.addressid = addressid;
+    public void setAddress(AddressEntity address) {
+        this.address = address;
     }
 }

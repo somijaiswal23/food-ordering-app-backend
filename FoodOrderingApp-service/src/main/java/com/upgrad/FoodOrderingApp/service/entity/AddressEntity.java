@@ -1,7 +1,5 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
-
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -14,13 +12,13 @@ import java.io.Serializable;
 @Table(name = "address")
 @NamedQueries(
         {
-                @NamedQuery(name = "allAddressesMethods", query = "select q from AddressEntity q"),
-                @NamedQuery(name = "UUID", query = "select c from AddressEntity c where c.uuid = :uuid"),
+                @NamedQuery(name = "allAddresses", query = "select q from AddressEntity q"),
+                @NamedQuery(name = "addressByUUID", query = "select c from AddressEntity c where c.uuid = :uuid"),
 
         }
 )
-
 public class AddressEntity implements Serializable{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -33,7 +31,7 @@ public class AddressEntity implements Serializable{
     @Column(name = "flat_buil_number")
     @NotNull
     @Size(max = 255)
-    private String flatNumber;
+    private String flatBuilNo;
 
     @Column(name = "locality")
     @NotNull
@@ -53,12 +51,24 @@ public class AddressEntity implements Serializable{
     @ManyToOne
     @JoinColumn(name = "state_id")
     @NotNull
-    private StateEntity stateid;
+    private StateEntity state;
 
     @Column(name = "active")
     @NotNull
-    @Size(max = 1)
-    private int active;
+    private Integer active;
+
+    @ManyToOne
+    @JoinTable(name = "customer_address", joinColumns = @JoinColumn(name = "address_id"),
+            inverseJoinColumns = @JoinColumn(name = "customer_id"))
+    private CustomerEntity customer;
+
+    public CustomerEntity getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(CustomerEntity customerEntity) {
+        this.customer = customerEntity;
+    }
 
     public Integer getId() {
         return id;
@@ -76,12 +86,12 @@ public class AddressEntity implements Serializable{
         this.uuid = uuid;
     }
 
-    public String getFlatNumber() {
-        return flatNumber;
+    public String getFlatBuilNo() {
+        return flatBuilNo;
     }
 
-    public void setFlatNumber(String flatNumber) {
-        this.flatNumber = flatNumber;
+    public void setFlatBuilNo(String flatNumber) {
+        this.flatBuilNo = flatNumber;
     }
 
     public String getLocality() {
@@ -108,19 +118,19 @@ public class AddressEntity implements Serializable{
         this.pincode = pincode;
     }
 
-    public StateEntity getStateid() {
-        return stateid;
+    public StateEntity getState() {
+        return state;
     }
 
-    public void setStateid(StateEntity stateid) {
-        this.stateid = stateid;
+    public void setState(StateEntity state) {
+        this.state = state;
     }
 
-    public int getActive() {
+    public Integer getActive() {
         return active;
     }
 
-    public void setActive(int active) {
+    public void setActive(Integer active) {
         this.active = active;
     }
 }
