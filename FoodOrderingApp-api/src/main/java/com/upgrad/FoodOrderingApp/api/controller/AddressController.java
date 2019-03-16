@@ -125,23 +125,24 @@ public class AddressController {
 //     *        authorization customer login access token in 'Bearer <access-token>' format
 //     * @return ResponseEntity<DeleteAddResponse> with HTTP status ok
 //     */
-//    @RequestMapping(method = RequestMethod.DELETE, path = "/address/{address_UUID}")
-//    public ResponseEntity<DeleteAddResponse> deleteAddResponse (@PathVariable("address_UUID") final String uuid, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UpdateAddressException, AddressNotFoundException {
+//    @RequestMapping(method = RequestMethod.DELETE, path = "/address/{address_id}")
+//    public ResponseEntity<DeleteAddressResponse> deleteAddResponse (@PathVariable("address_id") final String uuid, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UpdateAddressException, AddressNotFoundException {
 //
 //        String accessToken = authorization.split("Bearer ")[1];
 //        CustomerEntity customerEntity = customerService.getCustomer(accessToken);
 //
-//        if(uuid == null){
+//        if (uuid == null) {
 //            throw new UpdateAddressException("UAR-005", "Address id can not be empty");
 //        }
 //
-//       AddressEntity addressEntity = addressService.getAddressById(uuid);
+//        AddressEntity addressEntity = addressService.getAddressByUUID(uuid, customerEntity);
+//        AddressEntity deletedAddressEntity = addressService.deleteAddress(addressEntity);
 //
 //       if(addressEntity.getId() == null){
 //        throw new AddressNotFoundException("ANF-003","No Address by this id");
 //       }
 //
-//        DeleteAddResponse addDeleteResponse = new DeleteAddResponse().id(uuid).status("ADDRESS DELETED SUCCESSFULLY");
-//        return new ResponseEntity<DeleteAddResponse>(addDeleteResponse, HttpStatus.OK);
+//        DeleteAddressResponse addDeleteResponse = new DeleteAddressResponse().id(UUID.fromString(deletedAddressEntity.getUuid())).status("ADDRESS DELETED SUCCESSFULLY");
+//        return new ResponseEntity<DeleteAddressResponse>(addDeleteResponse, HttpStatus.OK);
 //    }
 }

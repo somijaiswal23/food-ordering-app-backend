@@ -51,7 +51,7 @@ public class CustomerEntity implements Serializable {
     @ToStringExclude
     @NotNull
     @Size(max = 255)
-    private String passoword;
+    private String password;
 
     @Column(name = "salt")
     @NotNull
@@ -62,6 +62,10 @@ public class CustomerEntity implements Serializable {
     @JoinTable(name = "customer_address", joinColumns = @JoinColumn(name = "customer_id"),
         inverseJoinColumns = @JoinColumn(name = "address_id"))
     private List<AddressEntity> addresses = new ArrayList<>();
+
+//    @OneToMany
+//    @JoinColumn(name = "address_id")
+//    private List<AddressEntity> addresses = new ArrayList<>();
 
     public List<AddressEntity> getAddresses() {
         return addresses;
@@ -120,11 +124,11 @@ public class CustomerEntity implements Serializable {
     }
 
     public String getPassoword() {
-        return passoword;
+        return password;
     }
 
-    public void setPassoword(String passoword) {
-        this.passoword = passoword;
+    public void setPassoword(String password) {
+        this.password = password;
     }
 
     public String getSalt() {

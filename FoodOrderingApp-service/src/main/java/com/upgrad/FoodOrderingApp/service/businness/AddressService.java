@@ -61,7 +61,14 @@ public class AddressService {
             throw new SaveAddressException("SAR-002", "Invalid pincode");
         }
 
-        return addressDao.createAddress(addressEntity);
+        AddressEntity createdAddressEntity = addressDao.createAddress(addressEntity);
+
+        CustomerAddressEntity customerAddressEntity = new CustomerAddressEntity();
+        customerAddressEntity.setCustomer(customerEntity.getId());
+        customerAddressEntity.setAddress(createdAddressEntity.getId());
+        customerAddressDao.createCustomerAddress(customerAddressEntity);
+
+        return createdAddressEntity;
     }
 
     public StateEntity getStateByUUID(String stateUUID) throws AddressNotFoundException {
@@ -100,7 +107,11 @@ public class AddressService {
     /**
      * This method implements the business logic for 'Get Address by Id' endpoint
      */
-    public AddressEntity getAddressById(String id) {
-         return addressDao.getAddressById(id);
+    public AddressEntity getAddressByUUID(String addressUUID, CustomerEntity customerEntity) {
+         return addressDao.getAddressByUUID(addressUUID);
+    }
+
+    public AddressEntity deleteAddress(AddressEntity addressEntity) {
+        return addressEntity;
     }
 }

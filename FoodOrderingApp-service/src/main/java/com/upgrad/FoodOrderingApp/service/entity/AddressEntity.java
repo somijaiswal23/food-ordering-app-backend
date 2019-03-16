@@ -60,14 +60,18 @@ public class AddressEntity implements Serializable{
     @ManyToOne
     @JoinTable(name = "customer_address", joinColumns = @JoinColumn(name = "address_id"),
             inverseJoinColumns = @JoinColumn(name = "customer_id"))
-    private CustomerEntity customerEntity;
+    private CustomerEntity customer;
 
-    public CustomerEntity getCustomerEntity() {
-        return customerEntity;
+//    @ManyToOne
+//    @JoinColumn(name = "customer_id")
+//    private CustomerEntity customer;
+
+    public CustomerEntity getCustomer() {
+        return customer;
     }
 
-    public void setCustomerEntity(CustomerEntity customerEntity) {
-        this.customerEntity = customerEntity;
+    public void setCustomer(CustomerEntity customerEntity) {
+        this.customer = customerEntity;
     }
 
     public Integer getId() {

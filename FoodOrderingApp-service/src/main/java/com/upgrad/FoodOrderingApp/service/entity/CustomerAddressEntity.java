@@ -1,21 +1,28 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+@Entity
+@Table(name = "customer_address")
 public class CustomerAddressEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToMany
-    @JoinColumn(name = "customer_id")
-    private CustomerEntity customer;
+//    @OneToMany
+//    @JoinColumn(name = "customer_id")
+    @Column(name = "customer_id")
+    @NotNull
+    private Integer customer;
 
-    @ManyToMany
-    @JoinColumn(name = "address_id")
-    private AddressEntity address;
+//    @ManyToOne
+//    @JoinColumn(name = "address_id")
+    @Column(name = "address_id")
+    @NotNull
+    private Integer address;
 
     public Integer getId() {
         return id;
@@ -25,19 +32,19 @@ public class CustomerAddressEntity implements Serializable {
         this.id = id;
     }
 
-    public CustomerEntity getCustomer() {
+    public Integer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(CustomerEntity customer) {
+    public void setCustomer(Integer customer) {
         this.customer = customer;
     }
 
-    public AddressEntity getAddress() {
+    public Integer getAddress() {
         return address;
     }
 
-    public void setAddress(AddressEntity address) {
+    public void setAddress(Integer address) {
         this.address = address;
     }
 }

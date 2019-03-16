@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2187793b-e64d-48fa-93dc-77d9c32a3738" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/AddressController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/AddressControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/AddressControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/StateDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/StateDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/StateEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/StateEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/AddressService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/AddressDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/AddressDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/AddressEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/AddressEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerAddressEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerAddressEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerAuthEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerAuthEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerEntity.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -46,10 +51,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="9" />
+          <entry key="class" value="10" />
           <entry key="gitignore" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="92" />
+          <entry key="java" value="114" />
           <entry key="sql" value="2" />
           <entry key="xml" value="2" />
           <entry key="yaml" value="1" />
@@ -57,9 +62,9 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="9" />
+          <entry key="CLASS" value="10" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="92" />
+          <entry key="JAVA" value="114" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SQL" value="2" />
           <entry key="XML" value="2" />
@@ -69,93 +74,155 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="13" />
-          <entry key="java" value="1568" />
+          <entry key="java" value="1876" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1568" />
+          <entry key="JAVA" value="1876" />
           <entry key="PLAIN_TEXT" value="13" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/CategoryController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="841">
-              <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/AddressController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="121" column="9" lean-forward="true" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/AddressControllerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="44" column="28" lean-forward="true" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/AddressService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2976#2977#0" expanded="true" />
-                <element signature="e#3028#3029#0" expanded="true" />
-                <element signature="e#3546#3547#0" expanded="true" />
-                <element signature="e#3592#3593#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/StateEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/StateDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="613">
-              <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.6547203">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/AddressEntity.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="198">
+                  <caret line="57" column="27" lean-forward="true" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#1730#1731#0" expanded="true" />
+                    <element signature="e#1761#1762#0" expanded="true" />
+                    <element signature="e#1823#1824#0" expanded="true" />
+                    <element signature="e#1869#1870#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/FoodOrderingAppApiApplication.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="308">
+                  <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#626#627#0" expanded="true" />
+                    <element signature="e#706#707#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/AddressService.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="511">
+                  <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#3249#3250#0" expanded="true" />
+                    <element signature="e#3301#3302#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/CategoryDao.java">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/CategoryService.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="379">
+                  <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CategoryEntity.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="176">
+                  <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/AddressController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="176">
+                  <caret line="80" column="34" selection-start-line="80" selection-start-column="34" selection-end-line="80" selection-end-column="34" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/AddressControllerTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="362">
+                  <caret line="326" lean-forward="true" selection-start-line="326" selection-end-line="326" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerEntity.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="396">
+                  <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+                  <folding>
+                    <element signature="e#1850#1851#0" expanded="true" />
+                    <element signature="e#1882#1883#0" expanded="true" />
+                    <element signature="e#1943#1944#0" expanded="true" />
+                    <element signature="e#1985#1986#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerAuthEntity.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="110">
+                  <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerAddressEntity.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="181">
+                  <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -221,7 +288,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/exception/CategoryNotFoundException.java" />
         <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/exception/AuthenticationFailedException.java" />
         <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/exception/AddressNotFoundException.java" />
         <option value="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/CustomerController.java" />
@@ -262,16 +328,17 @@
         <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/CustomerAddressEntity.java" />
         <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/CustomerAddressDao.java" />
         <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/CategoryService.java" />
-        <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerAddressEntity.java" />
-        <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/AddressDao.java" />
         <option value="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/exception/RestExceptionHandler.java" />
-        <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerEntity.java" />
-        <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/AddressEntity.java" />
-        <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/AddressService.java" />
-        <option value="$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/AddressControllerTest.java" />
         <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/StateEntity.java" />
         <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/StateDao.java" />
+        <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/AddressDao.java" />
+        <option value="$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/AddressControllerTest.java" />
+        <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerAuthEntity.java" />
+        <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/AddressEntity.java" />
+        <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerEntity.java" />
         <option value="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/AddressController.java" />
+        <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/AddressService.java" />
+        <option value="$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerAddressEntity.java" />
       </list>
     </option>
   </component>
@@ -394,69 +461,6 @@
             <path>
               <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
               <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="upgrad" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="upgrad" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="upgrad" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="upgrad" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
               <item name="FoodOrderingApp-service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -556,7 +560,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552757823525" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552766337269" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller" />
     <property name="last_opened_file_path" value="D:/software/postgresql-42.2.5.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -596,7 +600,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AddressControllerTest">
+  <component name="RunManager" selected="Spring Boot.FoodOrderingAppApiApplication">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -663,7 +667,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AddressControllerTest.shouldSaveAddress" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CustomerControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FoodOrderingApp-api" />
       <extension name="coverage">
         <pattern>
@@ -672,9 +676,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.upgrad.FoodOrderingApp.api.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.upgrad.FoodOrderingApp.api.controller.AddressControllerTest" />
-      <option name="METHOD_NAME" value="shouldSaveAddress" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="com.upgrad.FoodOrderingApp.api.controller.CustomerControllerTest" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
@@ -720,19 +722,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.AddressControllerTest.shouldSaveAddress" />
       <item itemvalue="JUnit.AddressControllerTest" />
       <item itemvalue="JUnit.AddressControllerTest.shouldNotSaveAddressWithIncorrectStateId" />
       <item itemvalue="Spring Boot.FoodOrderingAppApiApplication" />
       <item itemvalue="JUnit.AddressControllerTest.shouldNotGetAllAddressesWithExpiredSessionUser" />
+      <item itemvalue="JUnit.CustomerControllerTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AddressControllerTest" />
         <item itemvalue="Spring Boot.FoodOrderingAppApiApplication" />
+        <item itemvalue="JUnit.CustomerControllerTest" />
+        <item itemvalue="JUnit.AddressControllerTest" />
         <item itemvalue="JUnit.AddressControllerTest.shouldNotGetAllAddressesWithExpiredSessionUser" />
         <item itemvalue="JUnit.AddressControllerTest.shouldNotSaveAddressWithIncorrectStateId" />
-        <item itemvalue="JUnit.AddressControllerTest.shouldSaveAddress" />
       </list>
     </recent_temporary>
   </component>
@@ -760,20 +762,11 @@
       <workItem from="1552663133401" duration="1356000" />
       <workItem from="1552683816728" duration="30000" />
       <workItem from="1552683873339" duration="3143000" />
-      <workItem from="1552724697998" duration="21614000" />
+      <workItem from="1552724697998" duration="26915000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AddressControllerTest_shouldNotSaveAddressWithIncorrectStateId - 2019.03.16 at 17h 31m 46s.xml">
-      <configuration name="AddressControllerTest.shouldNotSaveAddressWithIncorrectStateId" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AddressControllerTest_shouldNotSaveAddressWithIncorrectStateId - 2019.03.16 at 17h 34m 49s.xml">
-      <configuration name="AddressControllerTest.shouldNotSaveAddressWithIncorrectStateId" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AddressControllerTest - 2019.03.16 at 17h 35m 03s.xml">
-      <configuration name="AddressControllerTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="AddressControllerTest - 2019.03.16 at 17h 57m 19s.xml">
       <configuration name="AddressControllerTest" configurationId="JUnit" />
     </history-entry>
@@ -795,9 +788,18 @@
     <history-entry file="AddressControllerTest - 2019.03.16 at 23h 05m 04s.xml">
       <configuration name="AddressControllerTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="AddressControllerTest - 2019.03.16 at 23h 07m 06s.xml">
+      <configuration name="AddressControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AddressControllerTest - 2019.03.17 at 00h 41m 28s.xml">
+      <configuration name="AddressControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CustomerControllerTest - 2019.03.17 at 00h 46m 24s.xml">
+      <configuration name="CustomerControllerTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="275062000" />
+    <option name="totallyTimeSpent" value="280363000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -812,7 +814,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20469798" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23221476" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -822,7 +824,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32765958" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.7929078" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.6836879" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39116204" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -892,15 +894,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/RestaurantController.java" />
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/RestaurantServiceImpl.java" />
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/resources/endpoints/address.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="510" column="12" selection-start-line="510" selection-start-column="12" selection-end-line="510" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/config/SwaggerConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1009,16 +1002,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/CustomerControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="487" column="1" lean-forward="true" selection-start-line="487" selection-start-column="1" selection-end-line="487" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/CategoryControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1623">
@@ -1060,28 +1043,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerAddressEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#467#468#0" expanded="true" />
-            <element signature="e#492#493#0" expanded="true" />
-            <element signature="e#529#530#0" expanded="true" />
-            <element signature="e#557#558#0" expanded="true" />
-            <element signature="e#600#601#0" expanded="true" />
-            <element signature="e#631#632#0" expanded="true" />
-            <element signature="e#687#688#0" expanded="true" />
-            <element signature="e#727#728#0" expanded="true" />
-            <element signature="e#768#769#0" expanded="true" />
-            <element signature="e#798#799#0" expanded="true" />
-            <element signature="e#851#852#0" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/CustomerDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -1093,16 +1054,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2860">
           <caret line="155" lean-forward="true" selection-start-line="155" selection-end-line="155" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/CustomerAddressDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1138,20 +1089,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="47" column="15" lean-forward="true" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CategoryEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="37" column="8" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CouponEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-170">
@@ -1163,23 +1100,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="71">
           <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/AddressDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/CategoryService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -1209,69 +1129,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/AddressEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1637#1638#0" expanded="true" />
-            <element signature="e#1674#1675#0" expanded="true" />
-            <element signature="e#1742#1743#0" expanded="true" />
-            <element signature="e#1794#1795#0" expanded="true" />
-            <element signature="e#2389#2390#0" expanded="true" />
-            <element signature="e#2418#2419#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/StateEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/StateDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/target/classes/com/upgrad/FoodOrderingApp/api/model/StatesList.class">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/AddressService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2976#2977#0" expanded="true" />
-            <element signature="e#3028#3029#0" expanded="true" />
-            <element signature="e#3546#3547#0" expanded="true" />
-            <element signature="e#3592#3593#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/FoodOrderingAppApiApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#626#627#0" expanded="true" />
-            <element signature="e#706#707#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/target/classes/com/upgrad/FoodOrderingApp/api/model/StatesListResponse.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -1290,10 +1149,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/StateDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-111">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/target/classes/com/upgrad/FoodOrderingApp/api/model/DeleteAddressResponse.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#2413#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/AddressDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="50" column="1" lean-forward="true" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/CustomerControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10528">
+          <caret line="487" column="1" lean-forward="true" selection-start-line="487" selection-start-column="1" selection-end-line="487" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/StateEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerAuthEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/CustomerAddressDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/AddressControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="44" column="28" lean-forward="true" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
+        <state relative-caret-position="362">
+          <caret line="326" lean-forward="true" selection-start-line="326" selection-end-line="326" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1302,10 +1228,88 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/AddressController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="121" column="9" lean-forward="true" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
+        <state relative-caret-position="176">
+          <caret line="80" column="34" selection-start-line="80" selection-start-column="34" selection-end-line="80" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerAddressEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/AddressService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3249#3250#0" expanded="true" />
+            <element signature="e#3301#3302#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/CategoryDao.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/CategoryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CategoryEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/AddressEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="57" column="27" lean-forward="true" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1730#1731#0" expanded="true" />
+            <element signature="e#1761#1762#0" expanded="true" />
+            <element signature="e#1823#1824#0" expanded="true" />
+            <element signature="e#1869#1870#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="e#1850#1851#0" expanded="true" />
+            <element signature="e#1882#1883#0" expanded="true" />
+            <element signature="e#1943#1944#0" expanded="true" />
+            <element signature="e#1985#1986#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/FoodOrderingAppApiApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+            <element signature="e#706#707#0" expanded="true" />
           </folding>
         </state>
       </provider>
