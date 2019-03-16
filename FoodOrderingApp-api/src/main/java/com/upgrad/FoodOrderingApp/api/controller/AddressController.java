@@ -2,7 +2,6 @@ package com.upgrad.FoodOrderingApp.api.controller;
 
 import com.upgrad.FoodOrderingApp.service.businness.AddressService;
 import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
-import com.upgrad.FoodOrderingApp.service.dao.AddressDao;
 import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
 import com.upgrad.FoodOrderingApp.service.entity.StateEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AddressNotFoundException;
@@ -112,7 +111,7 @@ public class AddressController {
             addressListResponse.addAddressesList(addressesResponse);
         }
 
-        return new ResponseEntity<AddressesResponse>(addressListResponse, HttpStatus.OK);
+        return new ResponseEntity<AllAddressesResponse>(addressListResponse, HttpStatus.OK);
 
     }
 
