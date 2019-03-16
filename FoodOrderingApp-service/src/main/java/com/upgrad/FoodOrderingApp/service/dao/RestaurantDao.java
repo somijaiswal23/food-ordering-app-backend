@@ -38,7 +38,7 @@ public class RestaurantDao {
      *
      * @return List<RestaurantCategory> object
      */
-    public List<RestaurantCategory> getCategories(int id){
+    public List<RestaurantCategory> getCategories(String id){
         try {
             return entityManager.createNamedQuery("categoriesMethods", RestaurantCategory.class).getResultList();
         } catch (NoResultException nre) {
