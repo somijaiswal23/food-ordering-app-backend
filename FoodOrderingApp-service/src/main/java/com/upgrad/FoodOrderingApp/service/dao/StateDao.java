@@ -36,7 +36,7 @@ public class StateDao {
      */
     public List<StateEntity> getAllStates() {
         try {
-            return entityManager.createNamedQuery("allStatesMethods", StateEntity.class).getResultList();
+            return entityManager.createNamedQuery("allStates", StateEntity.class).getResultList();
         } catch (NoResultException nre) {
             return null;
         }

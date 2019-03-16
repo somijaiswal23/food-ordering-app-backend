@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/address")
+@RequestMapping("/")
 public class AddressController {
 
     @Autowired
@@ -40,7 +40,7 @@ public class AddressController {
      * @throws AuthorizationFailedException if validation on customer access token fails
      */
     @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST, path = "", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(method = RequestMethod.POST, path = "/address", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<SaveAddressResponse> saveAddress(@RequestBody(required = false) final SaveAddressRequest saveAddressRequest, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, SaveAddressException, AddressNotFoundException
     {
         String accessToken = authorization.split("Bearer ")[1];
@@ -66,9 +66,9 @@ public class AddressController {
      *
      *@param authorization customer login access token in 'Bearer <access-token>' format
      *
-     * @return ResponseEntity<AllAddressesResponse> type object along with HttpStatus OK
+     * @return ResponseEntity<AddressListResponse> type object along with HttpStatus OK
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/customer", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(method = RequestMethod.GET, path = "/address/customer", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<AddressListResponse> getAllSavedAddress(@RequestHeader("authorization") final String authorization) throws AuthorizationFailedException{
 
         String accessToken = authorization.split("Bearer ")[1];
@@ -94,41 +94,38 @@ public class AddressController {
 
         return new ResponseEntity<AddressListResponse>(addressListResponse, HttpStatus.OK);
     }
-//
-//    /**
-//     * This api endpoint is used retrieve all the states in the database, for a customer
-//     *
-//     * @return ResponseEntity<AllStatesResponse> type object along with HttpStatus OK
-//     */
-//    @RequestMapping(method = RequestMethod.GET, path = "/states", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-//    public ResponseEntity<AllStatesResponse> getAllStates()
-//    {
-//
-//        /** Get all states */
-//
-//        List<StateEntity> statesList = addressService.getAllStates();
-//
-//        /** Response for Get All States */
-//        AllStatesResponse allStatesResponse = new AllStatesResponse();
-//
-//        for (StateEntity stateEntity : statesList) {
-//            AllStatesResponse listState = new AllStatesResponse()
-//                    .id(UUID.fromString(stateEntity.getUuid()))
-//                    .stateName(stateEntity.getStatename());
-//            allStatesResponse.addStatesMethod(listState);
-//        }
-//
-//        return new ResponseEntity<AllStatesResponse>(allStatesResponse, HttpStatus.OK);
-//
-//    }
-//
+
+    /**
+     * This api endpoint is used retrieve all the states in the database
+     *
+     * @return ResponseEntity<StatesListResponse> type object along with HttpStatus OK
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/states", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<StatesListResponse> getAllStates()
+    {
+        // Get all states
+        List<StateEntity> statesList = addressService.getAllStates();
+
+        // Response for Get All States
+        StatesListResponse statesListResponse = new StatesListResponse();
+
+        for (StateEntity stateEntity : statesList) {
+            StatesList listState = new StatesList()
+                    .id(UUID.fromString(stateEntity.getUuid()))
+                    .stateName(stateEntity.getStatename());
+            statesListResponse.addStatesItem(listState);
+        }
+
+        return new ResponseEntity<StatesListResponse>(statesListResponse, HttpStatus.OK);
+    }
+
 //    /**
 //     * This api endpoint is used to delete an address
 //     * @param uuid Address uuid is used to fetch the correct address
 //     *        authorization customer login access token in 'Bearer <access-token>' format
 //     * @return ResponseEntity<DeleteAddResponse> with HTTP status ok
 //     */
-//    @RequestMapping(method = RequestMethod.DELETE, path = "/{address_UUID}")
+//    @RequestMapping(method = RequestMethod.DELETE, path = "/address/{address_UUID}")
 //    public ResponseEntity<DeleteAddResponse> deleteAddResponse (@PathVariable("address_UUID") final String uuid, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UpdateAddressException, AddressNotFoundException {
 //
 //        String accessToken = authorization.split("Bearer ")[1];
