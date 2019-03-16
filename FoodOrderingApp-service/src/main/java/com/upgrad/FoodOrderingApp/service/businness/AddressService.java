@@ -2,12 +2,11 @@ package com.upgrad.FoodOrderingApp.service.businness;
 
 import com.upgrad.FoodOrderingApp.service.dao.AddressDao;
 import com.upgrad.FoodOrderingApp.service.dao.CustomerAddressDao;
+import com.upgrad.FoodOrderingApp.service.dao.OrdersDao;
 import com.upgrad.FoodOrderingApp.service.dao.StateDao;
-import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
-import com.upgrad.FoodOrderingApp.service.entity.CustomerAddressEntity;
-import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
-import com.upgrad.FoodOrderingApp.service.entity.StateEntity;
+import com.upgrad.FoodOrderingApp.service.entity.*;
 import com.upgrad.FoodOrderingApp.service.exception.AddressNotFoundException;
+import com.upgrad.FoodOrderingApp.service.exception.AuthorizationFailedException;
 import com.upgrad.FoodOrderingApp.service.exception.SaveAddressException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +26,9 @@ public class AddressService {
 
     @Autowired
     private StateDao stateDao;
+
+    @Autowired
+    private OrdersDao ordersDao;
 
     /**
      * This method implements the business logic for 'save address' endpoint
@@ -107,11 +109,28 @@ public class AddressService {
     /**
      * This method implements the business logic for 'Get Address by Id' endpoint
      */
-    public AddressEntity getAddressByUUID(String addressUUID, CustomerEntity customerEntity) {
-         return addressDao.getAddressByUUID(addressUUID);
+    public AddressEntity getAddressByUUID(String addressUUID, CustomerEntity customerEntity) throws AddressNotFoundException, AuthorizationFailedException {
+        AddressEntity addressEntity = addressDao.getAddressByUUID(addressUUID);
+
+        if (addressEntity == null) {
+            throw new AddressNotFoundException("ANF-003", "No address by this id");
+        }
+
+        if (!addressEntity.getCustomer().getUuid().equals(customerEntity.getUuid())) {
+            throw new AuthorizationFailedException("ATHR-004", "You are not authorized to view/update/delete any one else's address");
+        }
+
+        return addressEntity;
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public AddressEntity deleteAddress(AddressEntity addressEntity) {
-        return addressEntity;
+        List<OrdersEntity> ordersEntityList = ordersDao.getOrdersByAddress(addressEntity);
+        if (ordersEntityList == null || ordersEntityList.isEmpty()) {
+            return addressDao.deleteAddressEntity(addressEntity);
+        }
+
+        addressEntity.setActive(0);
+        return addressDao.updateAddressEntity(addressEntity);
     }
 }

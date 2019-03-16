@@ -12,14 +12,10 @@ public class CustomerAddressEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-//    @OneToMany
-//    @JoinColumn(name = "customer_id")
     @Column(name = "customer_id")
     @NotNull
     private Integer customer;
 
-//    @ManyToOne
-//    @JoinColumn(name = "address_id")
     @Column(name = "address_id")
     @NotNull
     private Integer address;

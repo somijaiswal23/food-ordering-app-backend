@@ -48,4 +48,13 @@ public class AddressDao {
             return null;
         }
     }
+
+    public AddressEntity updateAddressEntity(AddressEntity addressEntity) {
+        return entityManager.merge(addressEntity);
+    }
+
+    public AddressEntity deleteAddressEntity(AddressEntity addressEntity) {
+        entityManager.remove(addressEntity);
+        return addressEntity;
+    }
 }

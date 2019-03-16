@@ -63,10 +63,6 @@ public class CustomerEntity implements Serializable {
         inverseJoinColumns = @JoinColumn(name = "address_id"))
     private List<AddressEntity> addresses = new ArrayList<>();
 
-//    @OneToMany
-//    @JoinColumn(name = "address_id")
-//    private List<AddressEntity> addresses = new ArrayList<>();
-
     public List<AddressEntity> getAddresses() {
         return addresses;
     }

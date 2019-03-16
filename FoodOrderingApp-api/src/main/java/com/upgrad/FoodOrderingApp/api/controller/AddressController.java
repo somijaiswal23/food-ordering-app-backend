@@ -3,7 +3,6 @@ package com.upgrad.FoodOrderingApp.api.controller;
 import com.upgrad.FoodOrderingApp.api.model.*;
 import com.upgrad.FoodOrderingApp.service.businness.AddressService;
 import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
-import com.upgrad.FoodOrderingApp.service.dao.AddressDao;
 import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
 import com.upgrad.FoodOrderingApp.service.entity.StateEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AddressNotFoundException;
@@ -119,30 +118,26 @@ public class AddressController {
         return new ResponseEntity<StatesListResponse>(statesListResponse, HttpStatus.OK);
     }
 
-//    /**
-//     * This api endpoint is used to delete an address
-//     * @param uuid Address uuid is used to fetch the correct address
-//     *        authorization customer login access token in 'Bearer <access-token>' format
-//     * @return ResponseEntity<DeleteAddResponse> with HTTP status ok
-//     */
-//    @RequestMapping(method = RequestMethod.DELETE, path = "/address/{address_id}")
-//    public ResponseEntity<DeleteAddressResponse> deleteAddResponse (@PathVariable("address_id") final String uuid, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UpdateAddressException, AddressNotFoundException {
-//
-//        String accessToken = authorization.split("Bearer ")[1];
-//        CustomerEntity customerEntity = customerService.getCustomer(accessToken);
-//
-//        if (uuid == null) {
-//            throw new UpdateAddressException("UAR-005", "Address id can not be empty");
-//        }
-//
-//        AddressEntity addressEntity = addressService.getAddressByUUID(uuid, customerEntity);
-//        AddressEntity deletedAddressEntity = addressService.deleteAddress(addressEntity);
-//
-//       if(addressEntity.getId() == null){
-//        throw new AddressNotFoundException("ANF-003","No Address by this id");
-//       }
-//
-//        DeleteAddressResponse addDeleteResponse = new DeleteAddressResponse().id(UUID.fromString(deletedAddressEntity.getUuid())).status("ADDRESS DELETED SUCCESSFULLY");
-//        return new ResponseEntity<DeleteAddressResponse>(addDeleteResponse, HttpStatus.OK);
-//    }
+    /**
+     * This api endpoint is used to delete an address
+     * @param addressID Address uuid is used to fetch the correct address
+     *        authorization customer login access token in 'Bearer <access-token>' format
+     * @return ResponseEntity<DeleteAddResponse> with HTTP status ok
+     */
+    @RequestMapping(method = RequestMethod.DELETE, path = "/address/{address_id}")
+    public ResponseEntity<DeleteAddressResponse> deleteAddResponse (@PathVariable("address_id") final String addressID, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, AddressNotFoundException {
+
+        String accessToken = authorization.split("Bearer ")[1];
+        CustomerEntity customerEntity = customerService.getCustomer(accessToken);
+
+        if (addressID.equals("")) {
+            throw new AddressNotFoundException("ANF-005", "Address id can not be empty");
+        }
+
+        AddressEntity addressEntity = addressService.getAddressByUUID(addressID, customerEntity);
+        AddressEntity deletedAddressEntity = addressService.deleteAddress(addressEntity);
+
+        DeleteAddressResponse addDeleteResponse = new DeleteAddressResponse().id(UUID.fromString(deletedAddressEntity.getUuid())).status("ADDRESS DELETED SUCCESSFULLY");
+        return new ResponseEntity<DeleteAddressResponse>(addDeleteResponse, HttpStatus.OK);
+    }
 }

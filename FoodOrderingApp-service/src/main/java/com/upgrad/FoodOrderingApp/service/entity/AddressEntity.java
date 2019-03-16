@@ -62,10 +62,6 @@ public class AddressEntity implements Serializable{
             inverseJoinColumns = @JoinColumn(name = "customer_id"))
     private CustomerEntity customer;
 
-//    @ManyToOne
-//    @JoinColumn(name = "customer_id")
-//    private CustomerEntity customer;
-
     public CustomerEntity getCustomer() {
         return customer;
     }
