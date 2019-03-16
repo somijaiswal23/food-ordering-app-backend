@@ -67,15 +67,6 @@ public class AddressService {
         return addressDao.getState(id.toString());
     }
 
-    /**
-
-     * This method returns State Name
-     *
-     */
-
-    public StateEntity getstateEntity(StateEntity id){
-        return addressDao.getState(id.toString());
-    }
 
     /**
 
