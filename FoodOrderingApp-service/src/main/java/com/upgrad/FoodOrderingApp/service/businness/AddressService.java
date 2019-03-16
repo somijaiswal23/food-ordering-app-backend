@@ -43,11 +43,11 @@ public class AddressService {
 
         // Validation for required fields
         if (
-            addressEntity.getFlatNumber().equals("") ||
+            addressEntity.getFlatBuilNo().equals("") ||
             addressEntity.getLocality().equals("") ||
             addressEntity.getCity().equals("") ||
             addressEntity.getPincode().equals("") ||
-            addressEntity.getStateid() == null ||
+            addressEntity.getState() == null ||
             addressEntity.getActive() == null
         ) {
             throw new SaveAddressException("SAR-001", "No field can be empty");
@@ -61,11 +61,6 @@ public class AddressService {
             throw new SaveAddressException("SAR-002", "Invalid pincode");
         }
 
-//        CustomerAddressEntity customerAddressEntity = new CustomerAddressEntity();
-//        customerAddressEntity.setCustomer(customerEntity);
-//        customerAddressEntity.setAddress(addressEntity);
-//        customerAddressDao.createCustomerAddress(customerAddressEntity);
-
         return addressDao.createAddress(addressEntity);
     }
 
@@ -75,6 +70,10 @@ public class AddressService {
             throw new AddressNotFoundException("ANF-002", "No state by this state id");
         }
         return stateEntity;
+    }
+
+    public List<AddressEntity> getAllAddress(CustomerEntity customerEntity) {
+        return customerEntity.getAddresses();
     }
 
     /**

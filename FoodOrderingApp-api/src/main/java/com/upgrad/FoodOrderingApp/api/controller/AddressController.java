@@ -1,7 +1,6 @@
 package com.upgrad.FoodOrderingApp.api.controller;
 
-import com.upgrad.FoodOrderingApp.api.model.SaveAddressRequest;
-import com.upgrad.FoodOrderingApp.api.model.SaveAddressResponse;
+import com.upgrad.FoodOrderingApp.api.model.*;
 import com.upgrad.FoodOrderingApp.service.businness.AddressService;
 import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
 import com.upgrad.FoodOrderingApp.service.dao.AddressDao;
@@ -49,12 +48,11 @@ public class AddressController {
 
         final AddressEntity address = new AddressEntity();
         address.setUuid(UUID.randomUUID().toString());
-        address.setFlatNumber(saveAddressRequest.getFlatBuildingName());
+        address.setFlatBuilNo(saveAddressRequest.getFlatBuildingName());
         address.setLocality(saveAddressRequest.getLocality());
         address.setCity(saveAddressRequest.getCity());
         address.setPincode(saveAddressRequest.getPincode());
-        StateEntity stateEntity = addressService.getStateByUUID(saveAddressRequest.getStateUuid());
-        address.setStateid(stateEntity);
+        address.setState(addressService.getStateByUUID(saveAddressRequest.getStateUuid()));
         address.setActive(1);
 
         final AddressEntity savedAddress = addressService.saveAddress(address, customerEntity);
@@ -63,48 +61,39 @@ public class AddressController {
         return new ResponseEntity<SaveAddressResponse>(addressResponse, HttpStatus.CREATED);
     }
 
-//    /**
-//     * This api endpoint is used retrieve all the saved addresses in the database, for a customer
-//     *
-//     *@param authorization customer login access token in 'Bearer <access-token>' format
-//     *
-//     * @return ResponseEntity<AllAddressesResponse> type object along with HttpStatus OK
-//     */
-//    @RequestMapping(method = RequestMethod.GET, path = "/customer", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-//    public ResponseEntity<AllAddressesResponse> getAllSavedAddress(@RequestBody(required = false) final AllAddressesRequest allAddressesRequest, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException{
-//
-//
-//        String accessToken = authorization.split("Bearer ")[1];
-//        CustomerEntity customerEntity = customerService.getCustomer(accessToken);
-//
-//        /** Get all saved Addresses */
-//
-//        List<AddressEntity> addressesList = addressService.getAllAddresses();
-//
-//
-//        /** Create Response for Saved Addresses*/
-//
-//        AllAddressesResponse addressListResponse = new AllAddressesResponse();
-//
-//        for (AddressEntity addressEntity : addressesList) {
-//
-//            StateEntity stateEntity = new StateEntity();
-//            StateEntity stateData = addressService.getstateEntity(addressEntity.getStateid());
-//
-//            AllAddressesResponse addressesResponse = new AllAddressesResponse()
-//                    .id(UUID.fromString(addressEntity.getUuid()))
-//                    .flat_building_name(addressEntity.getFlatNumber())
-//                    .locality(addressEntity.getLocality())
-//                    .city(addressEntity.getCity())
-//                    .pincode(addressEntity.getPincode())
-//                    .state.id(stateData.getId())
-//                           .state_name(stateData.getStatename());
-//            addressListResponse.addAddressesList(addressesResponse);
-//        }
-//
-//        return new ResponseEntity<AddressesResponse>(addressListResponse, HttpStatus.OK);
-//
-//    }
+    /**
+     * This api endpoint is used retrieve all the saved addresses in the database, for a customer
+     *
+     *@param authorization customer login access token in 'Bearer <access-token>' format
+     *
+     * @return ResponseEntity<AllAddressesResponse> type object along with HttpStatus OK
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/customer", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<AddressListResponse> getAllSavedAddress(@RequestHeader("authorization") final String authorization) throws AuthorizationFailedException{
+
+        String accessToken = authorization.split("Bearer ")[1];
+        CustomerEntity customerEntity = customerService.getCustomer(accessToken);
+
+        //Get all saved addresses
+        List<AddressEntity> addressesList = addressService.getAllAddress(customerEntity);
+
+        //Create Response for saved addresses
+        AddressListResponse addressListResponse = new AddressListResponse();
+
+        for (AddressEntity addressEntity : addressesList) {
+            AddressList addressesResponse = new AddressList()
+                    .id(UUID.fromString(addressEntity.getUuid()))
+                    .flatBuildingName(addressEntity.getFlatBuilNo())
+                    .locality(addressEntity.getLocality())
+                    .city(addressEntity.getCity())
+                    .pincode(addressEntity.getPincode())
+                    .state(new AddressListState().id(UUID.fromString(addressEntity.getState().getUuid()))
+                           .stateName(addressEntity.getState().getStatename()));
+            addressListResponse.addAddressesItem(addressesResponse);
+        }
+
+        return new ResponseEntity<AddressListResponse>(addressListResponse, HttpStatus.OK);
+    }
 //
 //    /**
 //     * This api endpoint is used retrieve all the states in the database, for a customer

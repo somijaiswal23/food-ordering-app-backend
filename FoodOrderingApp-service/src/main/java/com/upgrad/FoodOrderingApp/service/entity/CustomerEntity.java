@@ -58,7 +58,7 @@ public class CustomerEntity implements Serializable {
     @Size(max = 255)
     private String salt;
 
-    @ManyToMany
+    @OneToMany
     @JoinTable(name = "customer_address", joinColumns = @JoinColumn(name = "customer_id"),
         inverseJoinColumns = @JoinColumn(name = "address_id"))
     private List<AddressEntity> addresses = new ArrayList<>();

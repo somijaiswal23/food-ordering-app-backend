@@ -4,8 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * AddressEntity class contains all the attributes to be mapped to all the fields in 'address' table in the database
@@ -15,7 +13,7 @@ import java.util.List;
 @NamedQueries(
         {
                 @NamedQuery(name = "allAddresses", query = "select q from AddressEntity q"),
-                @NamedQuery(name = "UUID", query = "select c from AddressEntity c where c.uuid = :uuid"),
+                @NamedQuery(name = "addressByUUID", query = "select c from AddressEntity c where c.uuid = :uuid"),
 
         }
 )
@@ -33,7 +31,7 @@ public class AddressEntity implements Serializable{
     @Column(name = "flat_buil_number")
     @NotNull
     @Size(max = 255)
-    private String flatNumber;
+    private String flatBuilNo;
 
     @Column(name = "locality")
     @NotNull
@@ -50,26 +48,26 @@ public class AddressEntity implements Serializable{
     @Size(max = 30)
     private String pincode;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "state_id")
     @NotNull
-    private StateEntity stateid;
+    private StateEntity state;
 
     @Column(name = "active")
     @NotNull
     private Integer active;
 
-    @ManyToMany
-    @JoinTable(name = "category_item", joinColumns = @JoinColumn(name = "address_id"),
+    @ManyToOne
+    @JoinTable(name = "customer_address", joinColumns = @JoinColumn(name = "address_id"),
             inverseJoinColumns = @JoinColumn(name = "customer_id"))
-    private List<CustomerEntity> customer = new ArrayList<>();
+    private CustomerEntity customerEntity;
 
-    public List<CustomerEntity> getCustomer() {
-        return customer;
+    public CustomerEntity getCustomerEntity() {
+        return customerEntity;
     }
 
-    public void setCustomer(List<CustomerEntity> customer) {
-        this.customer = customer;
+    public void setCustomerEntity(CustomerEntity customerEntity) {
+        this.customerEntity = customerEntity;
     }
 
     public Integer getId() {
@@ -88,12 +86,12 @@ public class AddressEntity implements Serializable{
         this.uuid = uuid;
     }
 
-    public String getFlatNumber() {
-        return flatNumber;
+    public String getFlatBuilNo() {
+        return flatBuilNo;
     }
 
-    public void setFlatNumber(String flatNumber) {
-        this.flatNumber = flatNumber;
+    public void setFlatBuilNo(String flatNumber) {
+        this.flatBuilNo = flatNumber;
     }
 
     public String getLocality() {
@@ -120,12 +118,12 @@ public class AddressEntity implements Serializable{
         this.pincode = pincode;
     }
 
-    public StateEntity getStateid() {
-        return stateid;
+    public StateEntity getState() {
+        return state;
     }
 
-    public void setStateid(StateEntity stateid) {
-        this.stateid = stateid;
+    public void setState(StateEntity state) {
+        this.state = state;
     }
 
     public Integer getActive() {
