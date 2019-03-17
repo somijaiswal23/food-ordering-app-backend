@@ -13,7 +13,7 @@ public class ItemDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public ItemEntity getItemByCouponUUID(String uuid) {
+    public ItemEntity getItemByUUID(String uuid) {
         try {
             return entityManager.createNamedQuery("itemByUUID", ItemEntity.class).setParameter("uuid", uuid).getSingleResult();
         } catch (NoResultException nre) {

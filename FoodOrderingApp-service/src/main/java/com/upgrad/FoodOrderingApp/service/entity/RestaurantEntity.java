@@ -103,8 +103,8 @@ public class RestaurantEntity implements Serializable {
         this.photoUrl = photoUrl;
     }
 
-    public BigDecimal getCustomerRating() {
-        return customerRating;
+    public Double getCustomerRating() {
+        return customerRating.doubleValue();
     }
 
     public void setCustomerRating(Double customerRating) {
