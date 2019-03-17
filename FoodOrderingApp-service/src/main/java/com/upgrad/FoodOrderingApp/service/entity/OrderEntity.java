@@ -5,13 +5,14 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "orders")
 @NamedQueries({
-        @NamedQuery(name = "ordersByAddress", query = "select q from OrdersEntity q where q.address = :address"),
+        @NamedQuery(name = "orderByAddress", query = "select q from OrderEntity q where q.address = :address"),
 })
-public class OrdersEntity implements Serializable {
+public class OrderEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,6 +58,20 @@ public class OrdersEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
     private RestaurantEntity restaurant;
+
+    public OrderEntity() {}
+
+    public OrderEntity(@NotNull @Size(max = 200) String uuid, @NotNull Number bill, @NotNull CouponEntity coupon, @NotNull Number discount, @NotNull ZonedDateTime date, @NotNull PaymentEntity payment, @NotNull CustomerEntity customer, @NotNull AddressEntity address, RestaurantEntity restaurant) {
+        this.uuid = uuid;
+        this.bill = bill;
+        this.coupon = coupon;
+        this.discount = discount;
+        this.date = date;
+        this.payment = payment;
+        this.customer = customer;
+        this.address = address;
+        this.restaurant = restaurant;
+    }
 
     public Integer getId() {
         return id;

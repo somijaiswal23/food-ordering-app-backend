@@ -2,7 +2,7 @@ package com.upgrad.FoodOrderingApp.service.businness;
 
 import com.upgrad.FoodOrderingApp.service.dao.AddressDao;
 import com.upgrad.FoodOrderingApp.service.dao.CustomerAddressDao;
-import com.upgrad.FoodOrderingApp.service.dao.OrdersDao;
+import com.upgrad.FoodOrderingApp.service.dao.OrderDao;
 import com.upgrad.FoodOrderingApp.service.dao.StateDao;
 import com.upgrad.FoodOrderingApp.service.entity.*;
 import com.upgrad.FoodOrderingApp.service.exception.AddressNotFoundException;
@@ -28,7 +28,7 @@ public class AddressService {
     private StateDao stateDao;
 
     @Autowired
-    private OrdersDao ordersDao;
+    private OrderDao ordersDao;
 
     /**
      * This method implements the business logic for 'save address' endpoint
@@ -125,7 +125,7 @@ public class AddressService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public AddressEntity deleteAddress(AddressEntity addressEntity) {
-        List<OrdersEntity> ordersEntityList = ordersDao.getOrdersByAddress(addressEntity);
+        List<OrderEntity> ordersEntityList = ordersDao.getOrdersByAddress(addressEntity);
         if (ordersEntityList == null || ordersEntityList.isEmpty()) {
             return addressDao.deleteAddressEntity(addressEntity);
         }
