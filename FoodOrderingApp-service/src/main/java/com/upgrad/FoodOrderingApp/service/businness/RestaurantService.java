@@ -19,13 +19,11 @@ public class RestaurantService {
      *
      */
 
-    public List<RestaurantEntity> getAllRestaurants() {
-
-        return restaurantDao.getAllRestaurants();
+    public List<RestaurantEntity> restaurantsByRating() {
+        return restaurantDao.restaurantsByRating();
     }
 
     public List<RestaurantCategory> getCategories(String id){
         return restaurantDao.getCategories(id);
     }
-
 }
