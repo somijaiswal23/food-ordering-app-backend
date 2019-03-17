@@ -25,9 +25,9 @@ public class RestaurantDao {
      *
      * @return List<RestaurantEntity> object
      */
-    public List<RestaurantEntity> getAllRestaurants() {
+    public List<RestaurantEntity> restaurantsByRating() {
         try {
-            return entityManager.createNamedQuery("allRestaurantsMethods", RestaurantEntity.class).getResultList();
+            return entityManager.createNamedQuery("allRestaurantsByRating", RestaurantEntity.class).getResultList();
         } catch (NoResultException nre) {
             return null;
         }
@@ -44,6 +44,13 @@ public class RestaurantDao {
         } catch (NoResultException nre) {
             return null;
         }
+    }
 
+    public RestaurantEntity getRestaurantByUuid(String uuid) {
+        try {
+            return entityManager.createNamedQuery("restaurantByUuid", RestaurantEntity.class).setParameter("uuid", uuid).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
     }
 }

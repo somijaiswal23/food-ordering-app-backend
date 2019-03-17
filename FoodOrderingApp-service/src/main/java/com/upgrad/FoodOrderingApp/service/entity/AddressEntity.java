@@ -62,6 +62,18 @@ public class AddressEntity implements Serializable{
             inverseJoinColumns = @JoinColumn(name = "customer_id"))
     private CustomerEntity customer;
 
+    public AddressEntity() {}
+
+    public AddressEntity(String uuid, String flatBuilNo, String locality, String city, String pincode, StateEntity stateEntity) {
+        this.uuid = uuid;
+        this.flatBuilNo = flatBuilNo;
+        this.locality = locality;
+        this.city = city;
+        this.pincode = pincode;
+        this.state = stateEntity;
+        this.active = 1;
+    }
+
     public CustomerEntity getCustomer() {
         return customer;
     }

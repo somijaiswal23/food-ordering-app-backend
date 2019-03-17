@@ -5,16 +5,19 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * RestaurantEntity class contains all the attributes to be mapped to all the fields in 'restaurant' table in the database
  */
 @Entity
 @Table(name = "restaurant")
-
 @NamedQueries(
         {
-                @NamedQuery(name = "allRestaurantsMethods", query = "select q from RestaurantEntity q order by q.customerRating"),
+                @NamedQuery(name = "allRestaurantsByRating", query = "select q from RestaurantEntity q order by q.customerRating desc"),
+                @NamedQuery(name = "restaurantByUuid", query = "select q from RestaurantEntity q where q.uuid = :uuid")
         }
 )
 public class RestaurantEntity implements Serializable {
@@ -40,7 +43,7 @@ public class RestaurantEntity implements Serializable {
 
     @Column(name = "customer_rating")
     @NotNull
-    private Integer customerRating;
+    private BigDecimal customerRating;
 
     @Column(name = "average_price_for_two")
     @NotNull
@@ -54,6 +57,19 @@ public class RestaurantEntity implements Serializable {
     @JoinColumn(name = "address_id")
     @NotNull
     private AddressEntity address;
+
+    @ManyToMany
+    @JoinTable(name = "restaurant_category", joinColumns = @JoinColumn(name = "restaurant_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private List<CategoryEntity> categories = new ArrayList<>();
+
+    public List<CategoryEntity> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<CategoryEntity> categories) {
+        this.categories = categories;
+    }
 
     public Integer getId() {
         return id;
@@ -87,27 +103,27 @@ public class RestaurantEntity implements Serializable {
         this.photoUrl = photoUrl;
     }
 
-    public Integer getCustomerRating() {
+    public BigDecimal getCustomerRating() {
         return customerRating;
     }
 
-    public void setCustomerRating(Integer customerRating) {
-        this.customerRating = customerRating;
+    public void setCustomerRating(Double customerRating) {
+        this.customerRating = new BigDecimal(customerRating);
     }
 
-    public Integer getAvgPriceForTwo() {
+    public Integer getAvgPrice() {
         return avgPriceForTwo;
     }
 
-    public void setAvgPriceForTwo(Integer avgPriceForTwo) {
+    public void setAvgPrice(Integer avgPriceForTwo) {
         this.avgPriceForTwo = avgPriceForTwo;
     }
 
-    public Integer getCustomersRated() {
+    public Integer getNumberCustomersRated() {
         return customersRated;
     }
 
-    public void setCustomersRated(Integer customersRated) {
+    public void setNumberCustomersRated(Integer customersRated) {
         this.customersRated = customersRated;
     }
 

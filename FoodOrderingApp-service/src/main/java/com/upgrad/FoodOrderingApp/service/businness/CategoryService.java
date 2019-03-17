@@ -1,7 +1,9 @@
 package com.upgrad.FoodOrderingApp.service.businness;
 
 import com.upgrad.FoodOrderingApp.service.dao.CategoryDao;
+import com.upgrad.FoodOrderingApp.service.dao.RestaurantDao;
 import com.upgrad.FoodOrderingApp.service.entity.CategoryEntity;
+import com.upgrad.FoodOrderingApp.service.entity.RestaurantEntity;
 import com.upgrad.FoodOrderingApp.service.exception.CategoryNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ public class CategoryService {
 
     @Autowired
     private CategoryDao categoryDao;
+
+    @Autowired
+    private RestaurantDao restaurantDao;
 
     /**
      * This method implements the business logic for 'category' endpoint
@@ -48,5 +53,12 @@ public class CategoryService {
         }
 
         return categoryEntity;
+    }
+
+    public List<CategoryEntity> getCategoriesByRestaurant(String restaurantUUID) {
+        RestaurantEntity restaurantEntity = restaurantDao.getRestaurantByUuid(restaurantUUID);
+        return restaurantEntity.getCategories().stream()
+                .sorted(Comparator.comparing(CategoryEntity::getCategoryName))
+                .collect(Collectors.toList());
     }
 }
