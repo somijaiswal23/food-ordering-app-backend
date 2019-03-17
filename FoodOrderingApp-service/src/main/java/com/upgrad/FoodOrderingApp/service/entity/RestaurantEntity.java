@@ -17,7 +17,10 @@ import java.util.List;
 @NamedQueries(
         {
                 @NamedQuery(name = "allRestaurantsByRating", query = "select q from RestaurantEntity q order by q.customerRating desc"),
-                @NamedQuery(name = "restaurantByUuid", query = "select q from RestaurantEntity q where q.uuid = :uuid")
+                @NamedQuery(name = "restaurantByUuid", query = "select q from RestaurantEntity q where q.uuid = :uuid"),
+                @NamedQuery(name="restaurantByName", query="select q from RestaurantEntity q where lower(q.restaurantName) contains :restaurantName"),
+                @NamedQuery(name="restaurantByCategoryId", query = "select q from RestaurantEntity q " +
+                                 "inner join on CategoryEntity c where c.categoryId=:categoryId")
         }
 )
 public class RestaurantEntity implements Serializable {
