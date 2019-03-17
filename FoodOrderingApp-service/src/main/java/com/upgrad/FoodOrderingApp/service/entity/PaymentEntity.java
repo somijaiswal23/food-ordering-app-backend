@@ -13,6 +13,7 @@ import java.io.Serializable;
 @NamedQueries(
         {
                 @NamedQuery(name = "allPaymentMethods", query = "select q from PaymentEntity q"),
+                @NamedQuery(name = "paymentByUUID", query = "select q from PaymentEntity q where q.uuid = :uuid")
         }
 )
 public class PaymentEntity implements Serializable {
@@ -30,6 +31,13 @@ public class PaymentEntity implements Serializable {
     @NotNull
     @Size(max = 255)
     private String paymentName;
+
+    public PaymentEntity() {}
+
+    public PaymentEntity(@NotNull @Size(max = 200) String uuid, @NotNull @Size(max = 255) String paymentName) {
+        this.uuid = uuid;
+        this.paymentName = paymentName;
+    }
 
     public Integer getId() {
         return id;
