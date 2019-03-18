@@ -16,6 +16,13 @@ public class AddressDao {
     @PersistenceContext
     private EntityManager entityManager;
 
+    /**
+     * Creates address entity from given address
+     *
+     * @param addressEntity Address details
+     *
+     * @return AddressEntity object
+     */
     public AddressEntity createAddress(AddressEntity addressEntity) {
         entityManager.persist(addressEntity);
         return addressEntity;
@@ -34,10 +41,24 @@ public class AddressDao {
         }
     }
 
+    /**
+     * Updated given address entity
+     *
+     * @param addressEntity Address to update
+     *
+     * @return AddressEntity object
+     */
     public AddressEntity updateAddressEntity(AddressEntity addressEntity) {
         return entityManager.merge(addressEntity);
     }
 
+    /**
+     * Deletes given address entity
+     *
+     * @param addressEntity Address to delete
+     *
+     * @return AddressEntity object
+     */
     public AddressEntity deleteAddressEntity(AddressEntity addressEntity) {
         entityManager.remove(addressEntity);
         return addressEntity;
