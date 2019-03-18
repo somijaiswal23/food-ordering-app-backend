@@ -4,6 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+/**
+ * OrderItemEntity class contains all the attributes to be mapped to all the fields in 'order_item' table in the database
+ */
 @Entity
 @Table(name = "order_item")
 @NamedQueries({
