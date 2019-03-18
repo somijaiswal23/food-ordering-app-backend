@@ -5,9 +5,9 @@ import com.upgrad.FoodOrderingApp.service.entity.RestaurantCategory;
 import com.upgrad.FoodOrderingApp.service.entity.RestaurantEntity;
 import com.upgrad.FoodOrderingApp.service.exception.RestaurantNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,20 +31,33 @@ public class RestaurantService {
 
 
     public RestaurantEntity getRestaurantById(final String restaurantId) throws RestaurantNotFoundException {
-        RestaurantEntity restaurantEntityById = restaurantDao.getRestaurantByUuid(restaurantId);
+        RestaurantEntity restaurantEntityById = restaurantDao.getRestaurantByUUID(restaurantId);
 
         if(restaurantEntityById==null){
             throw new RestaurantNotFoundException("RNF-001","No restaurant by this id");
         }
-        return restaurantDao.getRestaurantByUuid(restaurantId);
+        return restaurantDao.getRestaurantByUUID(restaurantId);
     }
 
-    public List<RestaurantEntity> getRestaurantsByName(final String restaurantName){
-        return restaurantDao.getRestaurantByName(restaurantName);
+    public List<RestaurantEntity> restaurantsByName(final String restaurantName) throws RestaurantNotFoundException {
+        if(restaurantName.isEmpty()){
+            throw new RestaurantNotFoundException("RNF-003", "Restaurant name field should not be empty");
+        }
+
+        List<RestaurantEntity> restaurantEntityList = restaurantDao.restaurantsByRating();
+        List<RestaurantEntity> matchingRestaurantEntityList = new ArrayList<RestaurantEntity>();
+        for (RestaurantEntity restaurantEntity : restaurantEntityList) {
+            if (restaurantEntity.getRestaurantName().toLowerCase().contains(restaurantName.toLowerCase())) {
+                matchingRestaurantEntityList.add(restaurantEntity);
+            }
+        }
+
+        return matchingRestaurantEntityList;
     }
 
-    public List<RestaurantEntity> getRestaurantsByCategoryId(final String categoryId){
+    public List<RestaurantEntity> getRestaurantsByCategoryId(final String categoryId) {
         return restaurantDao.getRestaurantsByCategoryId(categoryId);
+    }
 
     public RestaurantEntity restaurantByUUID(String uuid) throws RestaurantNotFoundException {
         RestaurantEntity restaurantEntity = restaurantDao.getRestaurantByUUID(uuid);

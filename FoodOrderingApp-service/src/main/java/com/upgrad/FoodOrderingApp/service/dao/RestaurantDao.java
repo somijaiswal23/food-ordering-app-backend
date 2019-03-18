@@ -2,7 +2,6 @@ package com.upgrad.FoodOrderingApp.service.dao;
 
 import com.upgrad.FoodOrderingApp.service.entity.RestaurantCategory;
 import com.upgrad.FoodOrderingApp.service.entity.RestaurantEntity;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -13,9 +12,7 @@ import java.util.List;
 /**
  * RestaurantDao class provides the database access for all the endpoints in restaurant controller
  */
-
 @Repository
-
 public class RestaurantDao {
 
     @PersistenceContext
@@ -57,7 +54,7 @@ public class RestaurantDao {
 
     public List<RestaurantEntity> getRestaurantByName(final String restaurantName){
         try {
-            return entityManager.createNamedQuery("restaurantByName", RestaurantEntity.class).getResultList();
+            return entityManager.createNamedQuery("restaurantByName", RestaurantEntity.class).setParameter("restaurantName", "%" + restaurantName + "%").getResultList();
         } catch (NoResultException nre) {
             return null;
         }
@@ -65,7 +62,7 @@ public class RestaurantDao {
 
     public List<RestaurantEntity> getRestaurantsByCategoryId(final String categoryId){
         try {
-            return entityManager.createNamedQuery("restaurantByCategoryId", RestaurantEntity.class).getResultList();
+            return entityManager.createNamedQuery("restaurantByCategoryId", RestaurantEntity.class).setParameter("categoryId", categoryId).getResultList();
         } catch (NoResultException nre) {
             return null;
         }
