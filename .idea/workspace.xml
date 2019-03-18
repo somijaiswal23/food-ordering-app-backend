@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/OrderControllerTest.java" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2187793b-e64d-48fa-93dc-77d9c32a3738" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="2187793b-e64d-48fa-93dc-77d9c32a3738" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/FoodOrderingApp-api/target/" />
@@ -75,13 +73,13 @@
           <entry key="dummy" value="7" />
           <entry key="gitignore" value="13" />
           <entry key="java" value="14761" />
-          <entry key="md" value="76" />
+          <entry key="md" value="78" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="14761" />
-          <entry key="Markdown" value="76" />
+          <entry key="Markdown" value="78" />
           <entry key="PLAIN_TEXT" value="20" />
         </counts>
       </usages-collector>
@@ -89,7 +87,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/FoodOrderingAppApiApplication.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
@@ -98,18 +96,6 @@
                 <element signature="e#626#627#0" expanded="true" />
                 <element signature="e#706#707#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="242">
-                <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-              </first_editor>
-              <second_editor />
             </state>
           </provider>
         </entry>
@@ -261,46 +247,6 @@
               <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
               <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingAppBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -319,7 +265,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552932497394" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552932634409" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller" />
     <property name="last_opened_file_path" value="D:/software/postgresql-42.2.5.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -556,7 +502,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="359133000" />
+    <option name="totallyTimeSpent" value="359269000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1131,6 +1077,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="242">
+            <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/FoodOrderingAppApiApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -1139,16 +1095,6 @@
             <element signature="e#626#627#0" expanded="true" />
             <element signature="e#706#707#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="242">
-            <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
