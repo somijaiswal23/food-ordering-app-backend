@@ -13,8 +13,6 @@ import java.io.Serializable;
 @NamedQueries(
         {
                 @NamedQuery(name = "allAddresses", query = "select q from AddressEntity q"),
-                @NamedQuery(name = "addressByUUID", query = "select c from AddressEntity c where c.uuid = :uuid"),
-
         }
 )
 public class AddressEntity implements Serializable{

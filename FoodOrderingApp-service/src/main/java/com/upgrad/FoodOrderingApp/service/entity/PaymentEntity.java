@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NamedQueries(
         {
                 @NamedQuery(name = "allPaymentMethods", query = "select q from PaymentEntity q"),
-                @NamedQuery(name = "paymentByUUID", query = "select q from PaymentEntity q where q.uuid = :uuid")
+                @NamedQuery(name = "paymentByUUID", query = "select q from PaymentEntity q where q.uuid = :uuid"),
         }
 )
 public class PaymentEntity implements Serializable {

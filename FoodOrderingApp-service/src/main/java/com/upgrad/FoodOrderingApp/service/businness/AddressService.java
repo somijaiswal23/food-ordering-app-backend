@@ -34,7 +34,7 @@ public class AddressService {
      * This method implements the business logic for 'save address' endpoint
      *
      * @param addressEntity new address will be created from given AddressEntity object
-     * @param customerEntity
+     * @param customerEntity customer whose address is to be updated
      *
      * @return AddressEntity object
      *
@@ -83,20 +83,6 @@ public class AddressService {
 
     public List<AddressEntity> getAllAddress(CustomerEntity customerEntity) {
         return customerEntity.getAddresses();
-    }
-
-    /**
-     * This method implements the business logic for 'Get All Saved Address' endpoint
-     */
-    public List<AddressEntity> getAllAddresses() {
-        return addressDao.getAllAddresses();
-    }
-
-    /**
-     * This method returns State Name
-     */
-    public StateEntity getstateEntity(StateEntity id){
-        return stateDao.getStateByUUID(id.toString());
     }
 
     /**

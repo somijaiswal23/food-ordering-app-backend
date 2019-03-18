@@ -93,6 +93,13 @@ public class CustomerDao {
         return entityManager.merge(customerEntity);
     }
 
+    /**
+     * This method returns customer entity for given UUI
+     *
+     * @param uuid customer entity UUID
+     *
+     * @return CustomerEntity object
+     */
     public CustomerEntity getCustomerByUUID(String uuid) {
         try {
             return entityManager.createNamedQuery("customerByUUID", CustomerEntity.class).setParameter("uuid", uuid).getSingleResult();

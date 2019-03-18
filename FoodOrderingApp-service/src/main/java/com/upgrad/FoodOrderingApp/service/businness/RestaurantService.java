@@ -3,7 +3,6 @@ package com.upgrad.FoodOrderingApp.service.businness;
 import com.upgrad.FoodOrderingApp.service.dao.CategoryDao;
 import com.upgrad.FoodOrderingApp.service.dao.RestaurantDao;
 import com.upgrad.FoodOrderingApp.service.entity.CategoryEntity;
-import com.upgrad.FoodOrderingApp.service.entity.RestaurantCategory;
 import com.upgrad.FoodOrderingApp.service.entity.RestaurantEntity;
 import com.upgrad.FoodOrderingApp.service.exception.CategoryNotFoundException;
 import com.upgrad.FoodOrderingApp.service.exception.InvalidRatingException;
@@ -14,7 +13,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -34,20 +32,6 @@ public class RestaurantService {
 
     public List<RestaurantEntity> restaurantsByRating() {
         return restaurantDao.restaurantsByRating();
-    }
-
-    public List<RestaurantCategory> getCategories(String id){
-        return restaurantDao.getCategories(id);
-    }
-
-
-    public RestaurantEntity getRestaurantById(final String restaurantId) throws RestaurantNotFoundException {
-        RestaurantEntity restaurantEntityById = restaurantDao.getRestaurantByUUID(restaurantId);
-
-        if(restaurantEntityById==null){
-            throw new RestaurantNotFoundException("RNF-001","No restaurant by this id");
-        }
-        return restaurantDao.getRestaurantByUUID(restaurantId);
     }
 
     public List<RestaurantEntity> restaurantsByName(final String restaurantName) throws RestaurantNotFoundException {
