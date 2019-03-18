@@ -28,7 +28,7 @@ public class CategoryController {
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, path = "/category", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<CategoriesListResponse> getAllCategoriesOrderedByName() {
+    public ResponseEntity<CategoriesListResponse> getAllCategories() {
 
         // get all categories ordered by name
         List<CategoryEntity> categoryEntityList = categoryService.getAllCategoriesOrderedByName();

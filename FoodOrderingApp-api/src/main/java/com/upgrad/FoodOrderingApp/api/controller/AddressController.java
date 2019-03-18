@@ -69,7 +69,7 @@ public class AddressController {
      * @return ResponseEntity<AddressListResponse> type object along with HttpStatus OK
      */
     @RequestMapping(method = RequestMethod.GET, path = "/address/customer", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<AddressListResponse> getAllSavedAddress(
+    public ResponseEntity<AddressListResponse> getAllSavedAddresses(
             @RequestHeader("authorization") final String authorization)
             throws AuthorizationFailedException
     {
@@ -130,7 +130,7 @@ public class AddressController {
      * @return ResponseEntity<DeleteAddResponse> with HTTP status ok
      */
     @RequestMapping(method = RequestMethod.DELETE, path = "/address/{address_id}")
-    public ResponseEntity<DeleteAddressResponse> deleteAddResponse (
+    public ResponseEntity<DeleteAddressResponse> deleteSavedAddress(
             @PathVariable("address_id") final String addressID,
             @RequestHeader("authorization") final String authorization)
             throws AuthorizationFailedException, AddressNotFoundException
