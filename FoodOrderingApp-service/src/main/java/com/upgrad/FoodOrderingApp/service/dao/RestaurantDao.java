@@ -2,6 +2,7 @@ package com.upgrad.FoodOrderingApp.service.dao;
 
 import com.upgrad.FoodOrderingApp.service.entity.RestaurantCategory;
 import com.upgrad.FoodOrderingApp.service.entity.RestaurantEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -49,6 +50,22 @@ public class RestaurantDao {
     public RestaurantEntity getRestaurantByUUID(String uuid) {
         try {
             return entityManager.createNamedQuery("restaurantByUUID", RestaurantEntity.class).setParameter("uuid", uuid).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
+    public List<RestaurantEntity> getRestaurantByName(final String restaurantName){
+        try {
+            return entityManager.createNamedQuery("restaurantByName", RestaurantEntity.class).getResultList();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
+    public List<RestaurantEntity> getRestaurantsByCategoryId(final String categoryId){
+        try {
+            return entityManager.createNamedQuery("restaurantByCategoryId", RestaurantEntity.class).getResultList();
         } catch (NoResultException nre) {
             return null;
         }

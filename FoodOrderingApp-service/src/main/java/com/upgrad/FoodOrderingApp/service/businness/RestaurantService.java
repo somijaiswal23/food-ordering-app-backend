@@ -29,11 +29,29 @@ public class RestaurantService {
         return restaurantDao.getCategories(id);
     }
 
+
+    public RestaurantEntity getRestaurantById(final String restaurantId) throws RestaurantNotFoundException {
+        RestaurantEntity restaurantEntityById = restaurantDao.getRestaurantByUuid(restaurantId);
+
+        if(restaurantEntityById==null){
+            throw new RestaurantNotFoundException("RNF-001","No restaurant by this id");
+        }
+        return restaurantDao.getRestaurantByUuid(restaurantId);
+    }
+
+    public List<RestaurantEntity> getRestaurantsByName(final String restaurantName){
+        return restaurantDao.getRestaurantByName(restaurantName);
+    }
+
+    public List<RestaurantEntity> getRestaurantsByCategoryId(final String categoryId){
+        return restaurantDao.getRestaurantsByCategoryId(categoryId);
+
     public RestaurantEntity restaurantByUUID(String uuid) throws RestaurantNotFoundException {
         RestaurantEntity restaurantEntity = restaurantDao.getRestaurantByUUID(uuid);
         if (restaurantEntity == null) {
             throw new RestaurantNotFoundException("RNF-001", "No restaurant by this id");
         }
         return restaurantEntity;
+
     }
 }
