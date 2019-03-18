@@ -12,9 +12,7 @@ import java.util.List;
 /**
  * RestaurantDao class provides the database access for all the endpoints in restaurant controller
  */
-
 @Repository
-
 public class RestaurantDao {
 
     @PersistenceContext
@@ -52,5 +50,25 @@ public class RestaurantDao {
         } catch (NoResultException nre) {
             return null;
         }
+    }
+
+    public List<RestaurantEntity> getRestaurantByName(final String restaurantName){
+        try {
+            return entityManager.createNamedQuery("restaurantByName", RestaurantEntity.class).setParameter("restaurantName", "%" + restaurantName + "%").getResultList();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
+    public List<RestaurantEntity> getRestaurantsByCategoryId(final String categoryId){
+        try {
+            return entityManager.createNamedQuery("restaurantByCategoryId", RestaurantEntity.class).setParameter("categoryId", categoryId).getResultList();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
+    public RestaurantEntity updateRestaurantEntity(RestaurantEntity restaurantEntity) {
+        return entityManager.merge(restaurantEntity);
     }
 }
