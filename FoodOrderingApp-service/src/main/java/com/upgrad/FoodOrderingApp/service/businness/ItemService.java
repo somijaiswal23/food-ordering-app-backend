@@ -1,12 +1,7 @@
 package com.upgrad.FoodOrderingApp.service.businness;
 
-import com.upgrad.FoodOrderingApp.service.dao.ItemDao;
-import com.upgrad.FoodOrderingApp.service.dao.OrderDao;
-import com.upgrad.FoodOrderingApp.service.dao.OrderItemDao;
-import com.upgrad.FoodOrderingApp.service.entity.ItemEntity;
-import com.upgrad.FoodOrderingApp.service.entity.OrderEntity;
-import com.upgrad.FoodOrderingApp.service.entity.OrderItemEntity;
-import com.upgrad.FoodOrderingApp.service.entity.RestaurantEntity;
+import com.upgrad.FoodOrderingApp.service.dao.*;
+import com.upgrad.FoodOrderingApp.service.entity.*;
 import com.upgrad.FoodOrderingApp.service.exception.ItemNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +19,12 @@ public class ItemService {
 
     @Autowired
     private OrderItemDao orderItemDao;
+
+    @Autowired
+    private RestaurantDao restaurantDao;
+
+    @Autowired
+    private CategoryDao categoryDao;
 
     public ItemEntity getItemByUUID(String uuid) throws ItemNotFoundException {
         ItemEntity itemEntity = itemDao.getItemByUUID(uuid);
@@ -61,5 +62,22 @@ public class ItemService {
         Collections.reverse(sortedItemEntityList);
 
         return sortedItemEntityList;
+    }
+
+    public List<ItemEntity> getItemsByCategoryAndRestaurant(String restaurantUUID, String categoryUUID) {
+        RestaurantEntity restaurantEntity = restaurantDao.getRestaurantByUUID(restaurantUUID);
+        CategoryEntity categoryEntity = categoryDao.getCategoryByUuid(categoryUUID);
+        List<ItemEntity> restaurantItemEntityList = new ArrayList<ItemEntity>();
+
+        for (ItemEntity restaurantItemEntity : restaurantEntity.getItems()) {
+            for (ItemEntity categoryItemEntity : categoryEntity.getItems()) {
+                if (restaurantItemEntity.getUuid().equals(categoryItemEntity.getUuid())) {
+                    restaurantItemEntityList.add(restaurantItemEntity);
+                }
+            }
+        }
+        restaurantItemEntityList.sort(Comparator.comparing(ItemEntity::getItemName));
+
+        return restaurantItemEntityList;
     }
 }
