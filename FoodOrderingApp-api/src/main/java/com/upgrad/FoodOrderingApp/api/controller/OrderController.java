@@ -67,6 +67,15 @@ public class OrderController {
     return new ResponseEntity<CouponDetailsResponse>(couponDetailsResponse, HttpStatus.OK);
     }
 
+    /**
+     * This api endpoint is used to find orders by customer
+     *
+     * @param authorization Customer access token in 'Bearer <access-token>' format
+     *
+     * @return ResponseEntity<CustomerOrderResponse> type object along with HttpStatus OK
+     *
+     * @throws AuthorizationFailedException If validation on access token fails
+     */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, path = "/order", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<CustomerOrderResponse> getCustomerOrders(@RequestHeader("authorization") final String authorization) throws AuthorizationFailedException {
@@ -142,6 +151,21 @@ public class OrderController {
         return new ResponseEntity<CustomerOrderResponse>(customerOrderResponse, HttpStatus.OK);
     }
 
+    /**
+     * This api endpoint is used to create new order
+     *
+     * @param saveOrderRequest this argument contains all the attributes required to create a new order in the database
+     * @param authorization Customer access token in 'Bearer <access-token>' format
+     *
+     * @return ResponseEntity<SaveOrderResponse> type object along with HttpStatus CREATED
+     *
+     * @throws AuthorizationFailedException If validation on access token fails
+     * @throws CouponNotFoundException If validation on coupon fails
+     * @throws AddressNotFoundException If validation on address fails
+     * @throws PaymentMethodNotFoundException If validation on payment fails
+     * @throws RestaurantNotFoundException If validation on restaurant fails
+     * @throws ItemNotFoundException If validation on item fails
+     */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, path = "/order", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<SaveOrderResponse> saveOrder(@RequestBody(required = false) final SaveOrderRequest saveOrderRequest, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, CouponNotFoundException, AddressNotFoundException, PaymentMethodNotFoundException, RestaurantNotFoundException, ItemNotFoundException {

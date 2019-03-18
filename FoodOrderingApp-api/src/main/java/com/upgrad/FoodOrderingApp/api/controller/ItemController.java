@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/")
 public class ItemController {
 
     @Autowired
@@ -25,6 +25,15 @@ public class ItemController {
     @Autowired
     private RestaurantService restaurantService;
 
+    /**
+     * This api endpoint is used to get top 5 items by popularity
+     *
+     * @param restaurantId UUID for restaurant entity
+     *
+     * @return ResponseEntity<ItemListResponse> type object along with HttpStatus OK
+     *
+     * @throws RestaurantNotFoundException If validation on restaurant fails
+     */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, path = "/item/restaurant/{restaurant_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     private ResponseEntity<ItemListResponse> getItemsByPopularity(@PathVariable("restaurant_id") final String restaurantId) throws RestaurantNotFoundException {

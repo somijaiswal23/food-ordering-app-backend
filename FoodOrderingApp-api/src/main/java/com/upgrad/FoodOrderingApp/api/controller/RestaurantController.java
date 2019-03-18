@@ -38,7 +38,7 @@ public class RestaurantController {
     /**
      * This api endpoint is used to retrieve list of all restaurants
      *
-     * @return ResponseEntity<AllRestaurantResponse> type object along with HttpStatus Ok
+     * @return ResponseEntity<AllRestaurantResponse> type object along with HttpStatus OK
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, path = "/restaurant", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -81,6 +81,15 @@ public class RestaurantController {
         return new ResponseEntity<RestaurantListResponse>(restaurantListResponse, HttpStatus.OK);
     }
 
+    /**
+     * This api endpoint is used to retrieve list of all restaurants by matching name
+     *
+     * @param restaurantName Restaurant name to match
+     *
+     * @return ResponseEntity<RestaurantListResponse> type object along with HttpStatus OK
+     *
+     * @throws RestaurantNotFoundException If validation restaurant fails
+     */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, path = "/restaurant/name/{restaurant_name}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<RestaurantListResponse> getRestaurantsByName(@PathVariable("restaurant_name") final String restaurantName) throws RestaurantNotFoundException {
@@ -126,10 +135,19 @@ public class RestaurantController {
         return new ResponseEntity<RestaurantListResponse>(restaurantListResponse, HttpStatus.OK);
     }
 
+    /**
+     * This api endpoint is used to retrieve list of all restaurants by category ID
+     *
+     * @param categoryId UUID of category
+     *
+     * @return ResponseEntity<RestaurantListResponse> type object along with HttpStatus OK
+     *
+     * @throws CategoryNotFoundException If validation on category fails
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/restaurant/category/{category_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<RestaurantListResponse> getRestaurantsByCategoryId(@PathVariable("category_id") final String catagoryId) throws CategoryNotFoundException{
+    public ResponseEntity<RestaurantListResponse> getRestaurantsByCategoryId(@PathVariable("category_id") final String categoryId) throws CategoryNotFoundException{
 
-        List<RestaurantEntity> restaurantEntityList = restaurantService.restaurantByCategory(catagoryId);
+        List<RestaurantEntity> restaurantEntityList = restaurantService.restaurantByCategory(categoryId);
 
         RestaurantListResponse restaurantListResponse = new RestaurantListResponse();
 
@@ -161,12 +179,20 @@ public class RestaurantController {
                     .address(restaurantDetailsResponseAddress)
                     .categories(categoriesString);
             restaurantListResponse.addRestaurantsItem(restaurantList);
-
         }
 
         return new ResponseEntity<RestaurantListResponse>(restaurantListResponse, HttpStatus.OK);
     }
 
+    /**
+     * This api endpoint is used to retrieve restaurant details by restaurant ID
+     *
+     * @param restaurantId UUID of restaurant
+     *
+     * @return ResponseEntity<RestaurantDetailsResponse> type object along with HttpStatus OK
+     *
+     * @throws RestaurantNotFoundException If validation restaurant fails
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/restaurant/{restaurant_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<RestaurantDetailsResponse> getRestaurantById(@PathVariable("restaurant_id") final String restaurantId) throws RestaurantNotFoundException {
 
@@ -214,6 +240,19 @@ public class RestaurantController {
         return new ResponseEntity<RestaurantDetailsResponse>(restaurantDetailsResponse, HttpStatus.OK);
     }
 
+    /**
+     * This api endpoint is used to update restaurant rating
+     *
+     * @param customerRating Customer rating
+     * @param restaurantId UUID of restaurant entity
+     * @param authorization customer credentials in 'Basic Base64<contactNumber:password>' format
+     *
+     * @return ResponseEntity<RestaurantUpdatedResponse> type object along with HttpStatus OK
+     *
+     * @throws AuthorizationFailedException If validation on access token fails
+     * @throws RestaurantNotFoundException If validation on restaurant fails
+     * @throws InvalidRatingException If validation on rating fails
+     */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.PUT, path = "/restaurant/{restaurant_id}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<RestaurantUpdatedResponse> updateRestaurantDetails(
