@@ -28,12 +28,21 @@ public class RestaurantService {
     /**
      * This method implements the business logic for 'Get All Restaurant' endpoint
      *
+     * @return List<RestaurantEntity> object
      */
-
     public List<RestaurantEntity> restaurantsByRating() {
         return restaurantDao.restaurantsByRating();
     }
 
+    /**
+     * Returns restaurants matching to given name
+     *
+     * @param restaurantName Restaurant name
+     *
+     * @return List<RestaurantEntity> object
+     *
+     * @throws RestaurantNotFoundException If validation on restaurant fails
+     */
     public List<RestaurantEntity> restaurantsByName(final String restaurantName) throws RestaurantNotFoundException {
         if(restaurantName.isEmpty()){
             throw new RestaurantNotFoundException("RNF-003", "Restaurant name field should not be empty");
@@ -50,6 +59,15 @@ public class RestaurantService {
         return matchingRestaurantEntityList;
     }
 
+    /**
+     * Returns restaurants for a given category
+     *
+     * @param categoryId UUID of category
+     *
+     * @return List<RestaurantEntity> object
+     *
+     * @throws CategoryNotFoundException If validation on category fails
+     */
     public List<RestaurantEntity> restaurantByCategory(final String categoryId) throws CategoryNotFoundException {
 
         if (categoryId.equals("")) {
@@ -67,6 +85,15 @@ public class RestaurantService {
         return restaurantEntityList;
     }
 
+    /**
+     * Returns restaurant for a given UUID
+     *
+     * @param uuid UUID of restaurant
+     *
+     * @return RestaurantEntity object
+     *
+     * @throws RestaurantNotFoundException If validation restaurant fails
+     */
     public RestaurantEntity restaurantByUUID(String uuid) throws RestaurantNotFoundException {
         if (uuid.equals("")) {
             throw new RestaurantNotFoundException("RNF-002", "Restaurant id field should not be empty");
@@ -80,6 +107,16 @@ public class RestaurantService {
         return restaurantEntity;
     }
 
+    /**
+     * Updates restaurant average customer rating and number of customers rated
+     *
+     * @param restaurantEntity UUID of restaurant entity
+     * @param newRating Customer rating
+     *
+     * @return RestaurantEntity object
+     *
+     * @throws InvalidRatingException If validation on customer rating fails
+     */
     @Transactional(propagation = Propagation.REQUIRED)
     public RestaurantEntity updateRestaurantRating(RestaurantEntity restaurantEntity, Double newRating) throws InvalidRatingException {
 

@@ -54,6 +54,15 @@ public class OrderService {
         return couponEntity;
     }
 
+    /**
+     * Returns coupon by coupon UUID
+     *
+     * @param uuid UUID of coupon
+     *
+     * @return CouponEntity object
+     *
+     * @throws CouponNotFoundException If validation on coupon fails
+     */
     public CouponEntity getCouponByCouponId(String uuid) throws CouponNotFoundException {
         CouponEntity couponEntity = couponDao.getCouponByCouponUUID(uuid);
 
@@ -64,16 +73,37 @@ public class OrderService {
         return couponEntity;
     }
 
+    /**
+     * Saves given order
+     *
+     * @param orderEntity Order details
+     *
+     * @return OrderEntity object
+     */
     @Transactional(propagation = Propagation.REQUIRED)
     public OrderEntity saveOrder(OrderEntity orderEntity) {
         return orderDao.createOrder(orderEntity);
     }
 
+    /**
+     * Saves given order and item relation
+     *
+     * @param orderItemEntity Order and item to relate
+     *
+     * @return OrderItemEntity object
+     */
     @Transactional(propagation = Propagation.REQUIRED)
     public OrderItemEntity saveOrderItem(OrderItemEntity orderItemEntity) {
         return orderItemDao.createOrderItemEntity(orderItemEntity);
     }
 
+    /**
+     * Returns orders by customer
+     *
+     * @param customerUUID UUID of customer
+     *
+     * @return List<OrderEntity> object
+     */
     public List<OrderEntity> getOrdersByCustomers(String customerUUID) {
         return orderDao.getOrdersByCustomers(customerDao.getCustomerByUUID(customerUUID));
     }
