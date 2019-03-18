@@ -389,7 +389,7 @@ public class AddressControllerTest {
                 .thenThrow(new AuthorizationFailedException("ATHR-003", "Your session is expired. Log in again to access this endpoint."));
 
         mockMvc
-                .perform(get("/address/customer")
+                .perform(delete("/address/customer")
                         .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
                         .header("authorization", "Bearer database_accesstoken1"))
                 .andExpect(status().isForbidden())
