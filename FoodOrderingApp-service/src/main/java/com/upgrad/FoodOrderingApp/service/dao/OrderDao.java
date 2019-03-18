@@ -11,12 +11,22 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+/**
+ * OrderDao class provides the database access for all the endpoints in order controller
+ */
 @Repository
 public class OrderDao {
 
     @PersistenceContext
     private EntityManager entityManager;
 
+    /**
+     * Returns orders for a given address
+     *
+     * @param addressEntity Address to get orders for
+     *
+     * @return List<OrderEntity> object
+     */
     public List<OrderEntity> getOrdersByAddress(AddressEntity addressEntity) {
         try {
             return entityManager.createNamedQuery("ordersByAddress", OrderEntity.class).setParameter("address", addressEntity).getResultList();
@@ -25,11 +35,25 @@ public class OrderDao {
         }
     }
 
+    /**
+     * Crates new order
+     *
+     * @param orderEntity Order details
+     *
+     * @return OrderEntity object
+     */
     public OrderEntity createOrder(OrderEntity orderEntity) {
         entityManager.persist(orderEntity);
         return orderEntity;
     }
 
+    /**
+     * Returns orders for a given customer
+     *
+     * @param customerEntity Customer to get orders for
+     *
+     * @return List<OrderEntity> object
+     */
     public List<OrderEntity> getOrdersByCustomers(CustomerEntity customerEntity) {
         try {
             return entityManager.createNamedQuery("ordersByCustomer", OrderEntity.class).setParameter("customer", customerEntity).getResultList();
@@ -38,6 +62,13 @@ public class OrderDao {
         }
     }
 
+    /**
+     * Returns orders for a given restaurant
+     *
+     * @param restaurantEntity Restaurant to get orders for
+     *
+     * @return List<OrderEntity> object
+     */
     public List<OrderEntity> getOrdersByRestaurant(RestaurantEntity restaurantEntity) {
         try {
             return entityManager.createNamedQuery("ordersByRestaurant", OrderEntity.class).setParameter("restaurant", restaurantEntity).getResultList();

@@ -30,6 +30,13 @@ public class PaymentDao {
         }
     }
 
+    /**
+     * Returns payment entity for a given UUID
+     *
+     * @param uuid UUID of payment entity
+     *
+     * @return PaymentEntity object
+     */
     public PaymentEntity getPaymentByUUID(String uuid) {
         try {
             return entityManager.createNamedQuery("paymentByUUID", PaymentEntity.class).setParameter("uuid", uuid).getSingleResult();

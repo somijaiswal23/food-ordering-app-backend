@@ -39,7 +39,10 @@ public class AddressController {
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, path = "/address", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<SaveAddressResponse> saveAddress(@RequestBody(required = false) final SaveAddressRequest saveAddressRequest, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, SaveAddressException, AddressNotFoundException
+    public ResponseEntity<SaveAddressResponse> saveAddress(
+            @RequestBody(required = false) final SaveAddressRequest saveAddressRequest,
+            @RequestHeader("authorization") final String authorization)
+            throws AuthorizationFailedException, SaveAddressException, AddressNotFoundException
     {
         String accessToken = authorization.split("Bearer ")[1];
         CustomerEntity customerEntity = customerService.getCustomer(accessToken);
@@ -54,7 +57,6 @@ public class AddressController {
         address.setActive(1);
 
         final AddressEntity savedAddress = addressService.saveAddress(address, customerEntity);
-
         SaveAddressResponse addressResponse = new SaveAddressResponse().id(savedAddress.getUuid()).status("ADDRESS SUCCESSFULLY REGISTERED");
         return new ResponseEntity<SaveAddressResponse>(addressResponse, HttpStatus.CREATED);
     }
@@ -67,15 +69,17 @@ public class AddressController {
      * @return ResponseEntity<AddressListResponse> type object along with HttpStatus OK
      */
     @RequestMapping(method = RequestMethod.GET, path = "/address/customer", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<AddressListResponse> getAllSavedAddress(@RequestHeader("authorization") final String authorization) throws AuthorizationFailedException{
-
+    public ResponseEntity<AddressListResponse> getAllSavedAddress(
+            @RequestHeader("authorization") final String authorization)
+            throws AuthorizationFailedException
+    {
         String accessToken = authorization.split("Bearer ")[1];
         CustomerEntity customerEntity = customerService.getCustomer(accessToken);
 
-        //Get all saved addresses
+        // Get all saved addresses
         List<AddressEntity> addressesList = addressService.getAllAddress(customerEntity);
 
-        //Create Response for saved addresses
+        // Create Response for saved addresses
         AddressListResponse addressListResponse = new AddressListResponse();
 
         for (AddressEntity addressEntity : addressesList) {
@@ -119,13 +123,18 @@ public class AddressController {
 
     /**
      * This api endpoint is used to delete an address
+     *
      * @param addressID Address uuid is used to fetch the correct address
-     *        authorization customer login access token in 'Bearer <access-token>' format
+     * @param authorization customer login access token in 'Bearer <access-token>' format
+     *
      * @return ResponseEntity<DeleteAddResponse> with HTTP status ok
      */
     @RequestMapping(method = RequestMethod.DELETE, path = "/address/{address_id}")
-    public ResponseEntity<DeleteAddressResponse> deleteAddResponse (@PathVariable("address_id") final String addressID, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, AddressNotFoundException {
-
+    public ResponseEntity<DeleteAddressResponse> deleteAddResponse (
+            @PathVariable("address_id") final String addressID,
+            @RequestHeader("authorization") final String authorization)
+            throws AuthorizationFailedException, AddressNotFoundException
+    {
         String accessToken = authorization.split("Bearer ")[1];
         CustomerEntity customerEntity = customerService.getCustomer(accessToken);
 
@@ -135,7 +144,6 @@ public class AddressController {
 
         AddressEntity addressEntity = addressService.getAddressByUUID(addressID, customerEntity);
         AddressEntity deletedAddressEntity = addressService.deleteAddress(addressEntity);
-
         DeleteAddressResponse addDeleteResponse = new DeleteAddressResponse().id(UUID.fromString(deletedAddressEntity.getUuid())).status("ADDRESS DELETED SUCCESSFULLY");
         return new ResponseEntity<DeleteAddressResponse>(addDeleteResponse, HttpStatus.OK);
     }

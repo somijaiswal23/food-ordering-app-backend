@@ -1,6 +1,5 @@
 package com.upgrad.FoodOrderingApp.service.dao;
 
-import com.upgrad.FoodOrderingApp.service.entity.RestaurantCategory;
 import com.upgrad.FoodOrderingApp.service.entity.RestaurantEntity;
 import org.springframework.stereotype.Repository;
 
@@ -32,18 +31,12 @@ public class RestaurantDao {
     }
 
     /**
-     * This method helps fetch all categories for a particular restaurant
+     * Returns restaurant entity for a given UUID
      *
-     * @return List<RestaurantCategory> object
+     * @param uuid UUID of restaurant entity
+     *
+     * @return RestaurantEntity object
      */
-    public List<RestaurantCategory> getCategories(String id){
-        try {
-            return entityManager.createNamedQuery("categoriesMethods", RestaurantCategory.class).getResultList();
-        } catch (NoResultException nre) {
-            return null;
-        }
-    }
-
     public RestaurantEntity getRestaurantByUUID(String uuid) {
         try {
             return entityManager.createNamedQuery("restaurantByUUID", RestaurantEntity.class).setParameter("uuid", uuid).getSingleResult();
@@ -52,22 +45,13 @@ public class RestaurantDao {
         }
     }
 
-    public List<RestaurantEntity> getRestaurantByName(final String restaurantName){
-        try {
-            return entityManager.createNamedQuery("restaurantByName", RestaurantEntity.class).setParameter("restaurantName", "%" + restaurantName + "%").getResultList();
-        } catch (NoResultException nre) {
-            return null;
-        }
-    }
-
-    public List<RestaurantEntity> getRestaurantsByCategoryId(final String categoryId){
-        try {
-            return entityManager.createNamedQuery("restaurantByCategoryId", RestaurantEntity.class).setParameter("categoryId", categoryId).getResultList();
-        } catch (NoResultException nre) {
-            return null;
-        }
-    }
-
+    /**
+     * Updates given restaurant entity
+     *
+     * @param restaurantEntity Update with given entity
+     *
+     * @return RestaurantEntity object
+     */
     public RestaurantEntity updateRestaurantEntity(RestaurantEntity restaurantEntity) {
         return entityManager.merge(restaurantEntity);
     }

@@ -31,6 +31,13 @@ public class CouponDao {
         }
     }
 
+    /**
+     * Returns coupon entity for a given UUID
+     *
+     * @param uuid UUID of coupon entity
+     *
+     * @return CouponEntity object
+     */
     public CouponEntity getCouponByCouponUUID(String uuid) {
         try {
             return entityManager.createNamedQuery("couponByUUID", CouponEntity.class).setParameter("uuid", uuid).getSingleResult();

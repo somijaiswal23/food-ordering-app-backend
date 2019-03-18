@@ -1,7 +1,5 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
-//import org.apache.commons.lang3.builder.ToStringExclude;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -10,7 +8,6 @@ import java.io.Serializable;
 /**
  * StateEntity class contains all the attributes to be mapped to all the fields in 'state' table in the database
  */
-
 @Entity
 @Table(name = "state")
 @NamedQueries({

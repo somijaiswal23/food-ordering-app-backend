@@ -8,6 +8,9 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+/**
+ * StateDao class provides the database access for all the required endpoints in address controller
+ */
 @Repository
 public class StateDao {
 

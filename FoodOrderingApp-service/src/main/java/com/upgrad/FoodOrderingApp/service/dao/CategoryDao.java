@@ -31,9 +31,9 @@ public class CategoryDao {
     }
 
     /**
-     * This methods returns category entity for a given uuid
+     * This method returns category entity for a given uuid
      *
-     * @param uuid UUID of category
+     * @param uuid UUID of category entity
      *
      * @return CategoryEntity object
      */

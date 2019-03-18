@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -54,31 +53,45 @@ public class OrderController {
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, path = "/order/coupon/{coupon_name}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<CouponDetailsResponse> getCouponByCouponName(@PathVariable("coupon_name") final String couponName, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, CouponNotFoundException {
-
-    String accessToken = authorization.split("Bearer ")[1];
-    CustomerEntity customerEntity = customerService.getCustomer(accessToken);
-
-    CouponEntity couponEntity = orderService.getCouponByCouponName(couponName);
-
-    CouponDetailsResponse couponDetailsResponse = new CouponDetailsResponse()
-            .id(UUID.fromString(couponEntity.getUuid()))
-            .couponName(couponEntity.getCouponName())
-            .percent(couponEntity.getPercent());
-    return new ResponseEntity<CouponDetailsResponse>(couponDetailsResponse, HttpStatus.OK);
-    }
-
-    @CrossOrigin
-    @RequestMapping(method = RequestMethod.GET, path = "/order", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<CustomerOrderResponse> getCustomerOrders(@RequestHeader("authorization") final String authorization) throws AuthorizationFailedException {
-
+    public ResponseEntity<CouponDetailsResponse> getCouponByCouponName(
+            @PathVariable("coupon_name") final String couponName,
+            @RequestHeader("authorization") final String authorization)
+            throws AuthorizationFailedException, CouponNotFoundException
+    {
         String accessToken = authorization.split("Bearer ")[1];
         CustomerEntity customerEntity = customerService.getCustomer(accessToken);
 
-        // get all orders by customer
+        CouponEntity couponEntity = orderService.getCouponByCouponName(couponName);
+
+        CouponDetailsResponse couponDetailsResponse = new CouponDetailsResponse()
+                .id(UUID.fromString(couponEntity.getUuid()))
+                .couponName(couponEntity.getCouponName())
+                .percent(couponEntity.getPercent());
+        return new ResponseEntity<CouponDetailsResponse>(couponDetailsResponse, HttpStatus.OK);
+    }
+
+    /**
+     * This api endpoint is used to find orders by customer
+     *
+     * @param authorization Customer access token in 'Bearer <access-token>' format
+     *
+     * @return ResponseEntity<CustomerOrderResponse> type object along with HttpStatus OK
+     *
+     * @throws AuthorizationFailedException If validation on access token fails
+     */
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.GET, path = "/order", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<CustomerOrderResponse> getCustomerOrders(
+            @RequestHeader("authorization") final String authorization)
+            throws AuthorizationFailedException
+    {
+        String accessToken = authorization.split("Bearer ")[1];
+        CustomerEntity customerEntity = customerService.getCustomer(accessToken);
+
+        // Get all orders by customer
         List<OrderEntity> orderEntityList = orderService.getOrdersByCustomers(customerEntity.getUuid());
 
-        // create response
+        // Create response
         CustomerOrderResponse customerOrderResponse = new CustomerOrderResponse();
 
         for (OrderEntity orderEntity : orderEntityList) {
@@ -143,10 +156,30 @@ public class OrderController {
         return new ResponseEntity<CustomerOrderResponse>(customerOrderResponse, HttpStatus.OK);
     }
 
+    /**
+     * This api endpoint is used to create new order
+     *
+     * @param saveOrderRequest this argument contains all the attributes required to create a new order in the database
+     * @param authorization Customer access token in 'Bearer <access-token>' format
+     *
+     * @return ResponseEntity<SaveOrderResponse> type object along with HttpStatus CREATED
+     *
+     * @throws AuthorizationFailedException If validation on access token fails
+     * @throws CouponNotFoundException If validation on coupon fails
+     * @throws AddressNotFoundException If validation on address fails
+     * @throws PaymentMethodNotFoundException If validation on payment fails
+     * @throws RestaurantNotFoundException If validation on restaurant fails
+     * @throws ItemNotFoundException If validation on item fails
+     */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, path = "/order", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<SaveOrderResponse> saveOrder(@RequestBody(required = false) final SaveOrderRequest saveOrderRequest, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, CouponNotFoundException, AddressNotFoundException, PaymentMethodNotFoundException, RestaurantNotFoundException, ItemNotFoundException {
-
+    public ResponseEntity<SaveOrderResponse> saveOrder(
+            @RequestBody(required = false) final SaveOrderRequest saveOrderRequest,
+            @RequestHeader("authorization") final String authorization)
+            throws AuthorizationFailedException, CouponNotFoundException,
+            AddressNotFoundException, PaymentMethodNotFoundException,
+            RestaurantNotFoundException, ItemNotFoundException
+    {
         String accessToken = authorization.split("Bearer ")[1];
         CustomerEntity customerEntity = customerService.getCustomer(accessToken);
 
@@ -171,7 +204,8 @@ public class OrderController {
             orderService.saveOrderItem(orderItemEntity);
         }
 
-        SaveOrderResponse saveOrderResponse = new SaveOrderResponse().id(savedOrderEntity.getUuid()).status("ORDER SUCCESSFULLY PLACED");
+        SaveOrderResponse saveOrderResponse = new SaveOrderResponse()
+                .id(savedOrderEntity.getUuid()).status("ORDER SUCCESSFULLY PLACED");
         return new ResponseEntity<SaveOrderResponse>(saveOrderResponse, HttpStatus.CREATED);
     }
 }

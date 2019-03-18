@@ -23,6 +23,15 @@ public class PaymentService {
         return paymentDao.getAllPaymentMethods();
     }
 
+    /**
+     * Returns payment for given UUID
+     *
+     * @param uuid UUID of payment entity
+     *
+     * @return PaymentEntity object
+     *
+     * @throws PaymentMethodNotFoundException If validation on payment fails
+     */
     public PaymentEntity getPaymentByUUID(String uuid) throws PaymentMethodNotFoundException {
         PaymentEntity paymentEntity = paymentDao.getPaymentByUUID(uuid);
         if (paymentEntity == null) {

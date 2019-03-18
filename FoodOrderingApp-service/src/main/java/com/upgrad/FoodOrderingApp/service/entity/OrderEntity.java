@@ -5,9 +5,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
 import java.util.Date;
 
+/**
+ * OrderEntity class contains all the attributes to be mapped to all the fields in 'orders' table in the database
+ */
 @Entity
 @Table(name = "orders")
 @NamedQueries({
