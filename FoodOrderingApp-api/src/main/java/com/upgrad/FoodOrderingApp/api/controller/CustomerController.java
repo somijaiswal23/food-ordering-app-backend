@@ -38,9 +38,11 @@ public class CustomerController {
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, path = "/customer/signup", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<SignupCustomerResponse> signup(@RequestBody(required = false) final SignupCustomerRequest signupCustomerRequest) throws SignUpRestrictedException {
-
-        // validation for required fields
+    public ResponseEntity<SignupCustomerResponse> signup(
+            @RequestBody(required = false) final SignupCustomerRequest signupCustomerRequest)
+            throws SignUpRestrictedException
+    {
+        // Validation for required fields
         if (
                 signupCustomerRequest.getFirstName().equals("") ||
                 signupCustomerRequest.getEmailAddress().equals("") ||
@@ -59,7 +61,8 @@ public class CustomerController {
         customerEntity.setPassoword(signupCustomerRequest.getPassword());
 
         final CustomerEntity createdCustomerEntity = customerService.saveCustomer(customerEntity);
-        SignupCustomerResponse customerResponse = new SignupCustomerResponse().id(createdCustomerEntity.getUuid()).status("CUSTOMER SUCCESSFULLY REGISTERED");
+        SignupCustomerResponse customerResponse = new SignupCustomerResponse()
+                .id(createdCustomerEntity.getUuid()).status("CUSTOMER SUCCESSFULLY REGISTERED");
         return new ResponseEntity<SignupCustomerResponse>(customerResponse, HttpStatus.CREATED);
     }
 
@@ -74,8 +77,10 @@ public class CustomerController {
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, path = "/customer/login", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<LoginResponse> login(@RequestHeader("authorization") final String authorization) throws AuthenticationFailedException {
-
+    public ResponseEntity<LoginResponse> login(
+            @RequestHeader("authorization") final String authorization)
+            throws AuthenticationFailedException
+    {
         byte[] decode;
         String contactNumber;
         String customerPassword;
@@ -91,7 +96,10 @@ public class CustomerController {
 
         CustomerAuthEntity createdCustomerAuthEntity = customerService.authenticate(contactNumber, customerPassword);
 
-        LoginResponse loginResponse = new LoginResponse().id(createdCustomerAuthEntity.getCustomer().getUuid()).message("LOGGED IN SUCCESSFULLY");
+        LoginResponse loginResponse = new LoginResponse()
+                .id(createdCustomerAuthEntity.getCustomer()
+                .getUuid()).message("LOGGED IN SUCCESSFULLY");
+
         loginResponse.setId(createdCustomerAuthEntity.getCustomer().getUuid());
         loginResponse.setFirstName(createdCustomerAuthEntity.getCustomer().getFirstName());
         loginResponse.setLastName(createdCustomerAuthEntity.getCustomer().getLastName());
@@ -118,13 +126,14 @@ public class CustomerController {
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, path = "/customer/logout", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<LogoutResponse> logout(@RequestHeader("authorization") final String authorization) throws AuthorizationFailedException {
-
+    public ResponseEntity<LogoutResponse> logout(
+            @RequestHeader("authorization") final String authorization)
+            throws AuthorizationFailedException
+    {
         String accessToken = authorization.split("Bearer ")[1];
-
         CustomerAuthEntity customerAuthEntity = customerService.logout(accessToken);
-
-        LogoutResponse logoutResponse = new LogoutResponse().id(customerAuthEntity.getCustomer().getUuid()).message("LOGGED OUT SUCCESSFULLY");
+        LogoutResponse logoutResponse = new LogoutResponse()
+                .id(customerAuthEntity.getCustomer().getUuid()).message("LOGGED OUT SUCCESSFULLY");
         return new ResponseEntity<LogoutResponse>(logoutResponse, HttpStatus.OK);
     }
 
@@ -141,8 +150,11 @@ public class CustomerController {
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.PUT, path = "/customer", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<UpdateCustomerResponse> update(@RequestBody(required = false) final UpdateCustomerRequest updateCustomerRequest, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UpdateCustomerException {
-
+    public ResponseEntity<UpdateCustomerResponse> update(
+            @RequestBody(required = false) final UpdateCustomerRequest updateCustomerRequest,
+            @RequestHeader("authorization") final String authorization)
+            throws AuthorizationFailedException, UpdateCustomerException
+    {
         if (updateCustomerRequest.getFirstName().equals("")) {
             throw new UpdateCustomerException("UCR-002", "First name field should not be empty");
         }
@@ -156,8 +168,8 @@ public class CustomerController {
         }
 
         CustomerEntity updatedCustomerEntity = customerService.updateCustomer(customerEntity);
-
-        UpdateCustomerResponse customerResponse = new UpdateCustomerResponse().id(updatedCustomerEntity.getUuid()).status("CUSTOMER DETAILS UPDATED SUCCESSFULLY");
+        UpdateCustomerResponse customerResponse = new UpdateCustomerResponse()
+                .id(updatedCustomerEntity.getUuid()).status("CUSTOMER DETAILS UPDATED SUCCESSFULLY");
         customerResponse.setFirstName(updatedCustomerEntity.getFirstName());
         customerResponse.setLastName(updatedCustomerEntity.getLastName());
         return new ResponseEntity<UpdateCustomerResponse>(customerResponse, HttpStatus.OK);
@@ -175,8 +187,11 @@ public class CustomerController {
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.PUT, path = "/customer/password", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<UpdatePasswordResponse> changePassword(@RequestBody(required = false) final UpdatePasswordRequest updatePasswordRequest, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UpdateCustomerException {
-
+    public ResponseEntity<UpdatePasswordResponse> changePassword(
+            @RequestBody(required = false) final UpdatePasswordRequest updatePasswordRequest,
+            @RequestHeader("authorization") final String authorization)
+            throws AuthorizationFailedException, UpdateCustomerException
+    {
         if (updatePasswordRequest.getOldPassword().equals("") || updatePasswordRequest.getNewPassword().equals("")) {
             throw new UpdateCustomerException("UCR-003", "No field should be empty");
         }
@@ -190,7 +205,9 @@ public class CustomerController {
                 customerEntity
         );
 
-        UpdatePasswordResponse updatePasswordResponse = new UpdatePasswordResponse().id(updatedCustomerEntity.getUuid()).status("CUSTOMER PASSWORD UPDATED SUCCESSFULLY");
+        UpdatePasswordResponse updatePasswordResponse = new UpdatePasswordResponse()
+                .id(updatedCustomerEntity.getUuid())
+                .status("CUSTOMER PASSWORD UPDATED SUCCESSFULLY");
         return new ResponseEntity<UpdatePasswordResponse>(updatePasswordResponse, HttpStatus.OK);
     }
 }

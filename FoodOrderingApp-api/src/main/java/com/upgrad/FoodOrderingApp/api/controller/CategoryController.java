@@ -57,12 +57,14 @@ public class CategoryController {
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, path = "/category/{category_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<CategoryDetailsResponse> getCategoryById(@PathVariable("category_id") final String categoryId) throws CategoryNotFoundException {
-
-        // get all items for category
+    public ResponseEntity<CategoryDetailsResponse> getCategoryById(
+            @PathVariable("category_id") final String categoryId)
+            throws CategoryNotFoundException
+    {
+        // Get all items for category
         CategoryEntity categoryEntity = categoryService.getCategoryById(categoryId);
 
-        // create response
+        // Create response
         CategoryDetailsResponse categoryDetailsResponse = new CategoryDetailsResponse().id(UUID.fromString(categoryEntity.getUuid())).categoryName(categoryEntity.getCategoryName());
 
         for (ItemEntity itemEntity : categoryEntity.getItems()) {

@@ -92,8 +92,10 @@ public class RestaurantController {
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, path = "/restaurant/name/{restaurant_name}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<RestaurantListResponse> getRestaurantsByName(@PathVariable("restaurant_name") final String restaurantName) throws RestaurantNotFoundException {
-
+    public ResponseEntity<RestaurantListResponse> getRestaurantsByName(
+            @PathVariable("restaurant_name") final String restaurantName)
+            throws RestaurantNotFoundException
+    {
         List<RestaurantEntity> restaurantEntityList = restaurantService.restaurantsByName(restaurantName);
 
         RestaurantListResponse restaurantListResponse = new RestaurantListResponse();
@@ -145,8 +147,10 @@ public class RestaurantController {
      * @throws CategoryNotFoundException If validation on category fails
      */
     @RequestMapping(method = RequestMethod.GET, path = "/restaurant/category/{category_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<RestaurantListResponse> getRestaurantsByCategoryId(@PathVariable("category_id") final String categoryId) throws CategoryNotFoundException{
-
+    public ResponseEntity<RestaurantListResponse> getRestaurantsByCategoryId(
+            @PathVariable("category_id") final String categoryId)
+            throws CategoryNotFoundException
+    {
         List<RestaurantEntity> restaurantEntityList = restaurantService.restaurantByCategory(categoryId);
 
         RestaurantListResponse restaurantListResponse = new RestaurantListResponse();
@@ -194,8 +198,10 @@ public class RestaurantController {
      * @throws RestaurantNotFoundException If validation restaurant fails
      */
     @RequestMapping(method = RequestMethod.GET, path = "/restaurant/{restaurant_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<RestaurantDetailsResponse> getRestaurantById(@PathVariable("restaurant_id") final String restaurantId) throws RestaurantNotFoundException {
-
+    public ResponseEntity<RestaurantDetailsResponse> getRestaurantById(
+            @PathVariable("restaurant_id") final String restaurantId)
+            throws RestaurantNotFoundException
+    {
         RestaurantEntity restaurantEntity = restaurantService.restaurantByUUID(restaurantId);
 
         RestaurantDetailsResponseAddressState restaurantDetailsResponseAddressState = new RestaurantDetailsResponseAddressState()
