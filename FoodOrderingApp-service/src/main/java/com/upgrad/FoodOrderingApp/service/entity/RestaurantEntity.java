@@ -20,7 +20,8 @@ import java.util.List;
                 @NamedQuery(name = "restaurantByUuid", query = "select q from RestaurantEntity q where q.uuid = :uuid"),
                 @NamedQuery(name="restaurantByName", query="select q from RestaurantEntity q where lower(q.restaurantName) contains :restaurantName"),
                 @NamedQuery(name="restaurantByCategoryId", query = "select q from RestaurantEntity q " +
-                                 "inner join on CategoryEntity c where c.categoryId=:categoryId")
+                                 "inner join on CategoryEntity c where c.categoryId=:categoryId"),
+                @NamedQuery(name = "restaurantByUUID", query = "select q from RestaurantEntity q where q.uuid = :uuid"),
         }
 )
 public class RestaurantEntity implements Serializable {
@@ -106,8 +107,8 @@ public class RestaurantEntity implements Serializable {
         this.photoUrl = photoUrl;
     }
 
-    public BigDecimal getCustomerRating() {
-        return customerRating;
+    public Double getCustomerRating() {
+        return customerRating.doubleValue();
     }
 
     public void setCustomerRating(Double customerRating) {

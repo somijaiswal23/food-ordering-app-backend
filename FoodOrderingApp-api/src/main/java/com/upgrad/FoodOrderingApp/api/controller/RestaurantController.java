@@ -14,7 +14,11 @@ import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import javax.annotation.security.PermitAll;
+
+import java.math.BigDecimal;
+
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -66,7 +70,7 @@ public class RestaurantController {
                     .id(UUID.fromString(restaurantEntity.getUuid()))
                     .restaurantName(restaurantEntity.getRestaurantName())
                     .photoURL(restaurantEntity.getPhotoUrl())
-                    .customerRating(restaurantEntity.getCustomerRating())
+                    .customerRating(new BigDecimal(restaurantEntity.getCustomerRating()))
                     .averagePrice(restaurantEntity.getAvgPrice())
                     .numberCustomersRated(restaurantEntity.getNumberCustomersRated())
                     .address(restaurantDetailsResponseAddress)

@@ -4,14 +4,18 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.ZonedDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "orders")
 @NamedQueries({
-        @NamedQuery(name = "ordersByAddress", query = "select q from OrdersEntity q where q.address = :address"),
+        @NamedQuery(name = "ordersByAddress", query = "select q from OrderEntity q where q.address = :address"),
+        @NamedQuery(name = "ordersByCustomer", query = "select q from OrderEntity q where q.customer = :customer order by q.date desc "),
+        @NamedQuery(name = "ordersByRestaurant", query = "select q from OrderEntity q where q.restaurant = :restaurant"),
 })
-public class OrdersEntity implements Serializable {
+public class OrderEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +28,7 @@ public class OrdersEntity implements Serializable {
 
     @Column(name = "bill")
     @NotNull
-    private Number bill;
+    private BigDecimal bill;
 
     @ManyToOne
     @JoinColumn(name = "coupon_id")
@@ -33,11 +37,11 @@ public class OrdersEntity implements Serializable {
 
     @Column(name = "discount")
     @NotNull
-    private Number discount;
+    private BigDecimal discount;
 
     @Column(name = "date")
     @NotNull
-    private ZonedDateTime date;
+    private Date date;
 
     @OneToOne
     @JoinColumn(name = "payment_id")
@@ -56,7 +60,22 @@ public class OrdersEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
+    @NotNull
     private RestaurantEntity restaurant;
+
+    public OrderEntity() {}
+
+    public OrderEntity(@NotNull @Size(max = 200) String uuid, @NotNull Double bill, @NotNull CouponEntity coupon, @NotNull Double discount, @NotNull Date date, @NotNull PaymentEntity payment, @NotNull CustomerEntity customer, @NotNull AddressEntity address, RestaurantEntity restaurant) {
+        this.uuid = uuid;
+        this.bill = new BigDecimal(bill);
+        this.coupon = coupon;
+        this.discount = new BigDecimal(discount);
+        this.date = date;
+        this.payment = payment;
+        this.customer = customer;
+        this.address = address;
+        this.restaurant = restaurant;
+    }
 
     public Integer getId() {
         return id;
@@ -74,12 +93,12 @@ public class OrdersEntity implements Serializable {
         this.uuid = uuid;
     }
 
-    public Number getBill() {
-        return bill;
+    public Double getBill() {
+        return bill.doubleValue();
     }
 
-    public void setBill(Number bill) {
-        this.bill = bill;
+    public void setBill(Double bill) {
+        this.bill = new BigDecimal(bill);
     }
 
     public CouponEntity getCoupon() {
@@ -90,19 +109,19 @@ public class OrdersEntity implements Serializable {
         this.coupon = coupon;
     }
 
-    public Number getDiscount() {
-        return discount;
+    public Double getDiscount() {
+        return discount.doubleValue();
     }
 
-    public void setDiscount(Number discount) {
-        this.discount = discount;
+    public void setDiscount(Double discount) {
+        this.discount = new BigDecimal(discount);
     }
 
-    public ZonedDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(ZonedDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
